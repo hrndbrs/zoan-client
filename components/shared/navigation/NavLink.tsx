@@ -13,7 +13,7 @@ export default function NavLink({
 	return (
 		<li
 			className={
-				`flex items-center max-sm:mb-9 ` + (className ? className : "")
+				`flex items-center max-md:mb-9 ` + (className ? className : "")
 			}
 			{...props}
 		>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
-import NavigationMenu from "@/components/shared/navigation/NavigationMenu";
+// import NavigationMenu from "@/components/shared/navigation/NavigationMenu";
+import Header from "@/components/shared/header/Header";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -21,7 +22,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={barlow.className}>
-				<NavigationMenu />
+				<Header />
 				{children}
 			</body>
 		</html>

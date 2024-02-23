@@ -17,7 +17,7 @@ export default function MobileNavigation() {
 		<>
 			<button
 				onClick={toggleNavLinks}
-				className="sm:hidden flex items-center justify-end"
+				className="md:hidden flex items-center justify-end"
 			>
 				<Image
 					src={burgerIcon}
@@ -26,7 +26,7 @@ export default function MobileNavigation() {
 					alt="burger"
 				/>
 			</button>
-			<div className={"sm:hidden col-span-2" + (menuExpanded ? "" : " hidden")}>
+			<div className={"md:hidden col-span-2" + (menuExpanded ? "" : " hidden")}>
 				<NavLinksContainer />
 			</div>
 		</>
