@@ -4,6 +4,7 @@ import NavLink, { NavLinkProps } from "./NavLink";
 interface NavLinksContainerProps
 	extends React.HTMLAttributes<HTMLUListElement> {
 	navLinkProps?: Omit<NavLinkProps, "path">;
+	showButton?: boolean;
 }
 
 const routes = [
@@ -32,18 +33,25 @@ const routes = [
 export default function NavLinksContainer({
 	className,
 	navLinkProps,
+	showButton = true,
 	...props
 }: NavLinksContainerProps) {
 	return (
 		<ul className={`${className}`} {...props}>
 			{routes.map((route, idx) => (
-				<NavLink {...navLinkProps!} path={route.path} key={idx}>
+				<NavLink {...navLinkProps} path={route.path} key={idx}>
 					{route.name}
 				</NavLink>
 			))}
-			<li className="flex items-center sm:hidden">
-				<Button className="bg-black text-white font-bold">Contact Us</Button>
-			</li>
+			{showButton ? (
+				<li className="flex items-center md:hidden">
+					<Button>Contact Us</Button>
+				</li>
+			) : (
+				<NavLink {...navLinkProps} path="/contact">
+					Contact
+				</NavLink>
+			)}
 		</ul>
 	);
 }
