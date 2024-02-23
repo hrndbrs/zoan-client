@@ -5,7 +5,7 @@ import { companyProfile } from "@/lib/mockData";
 
 export default function LabelTop() {
 	return (
-		<div className="bg-black text-white px-5 py-2 max-md:hidden">
+		<div className="bg-natural-9 text-white px-5 py-2 max-md:hidden">
 			<div className="inner-container md:justify-between text-xs">
 				<div className="flex gap-6">
 					<div className="flex items-center gap-1">

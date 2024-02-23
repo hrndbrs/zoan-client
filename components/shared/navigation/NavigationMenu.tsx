@@ -1,28 +1,23 @@
 import NavLinksContainer from "./NavLinksContainer";
 import MobileNavigation from "./MobileNavigation";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import LogoContainer from "../logo-container/LogoContainer";
 
 export default function NavigationMenu() {
-	const logoWidth = 132;
-	const logoHeight = (logoWidth * 65) / 425;
-
 	return (
-		<nav className="w-full py-3 px-5">
-			<div className="inner-container items-stretch md:justify-between gap-4 max-md:grid max-md:grid-cols-2">
-				<div className="flex items-center">
-					<Image
-						src="/icons/zoan-h-dark.svg"
-						height={logoHeight}
-						width={logoWidth}
-						alt="nav-logo"
+		<nav className="w-full bg-natural-1 py-3 px-5">
+			<div className="inner-container">
+				<div className="w-full grid grid-cols-4 max-md:grid-cols-2">
+					<LogoContainer
+						fileName="zoan-h-dark.svg"
+						className="flex items-stretch"
 					/>
+					<NavLinksContainer className="flex justify-center gap-8 col-span-2 max-md:hidden" />
+					<div className="flex justify-end items-center max-md:hidden">
+						<Button>Contact Us</Button>
+					</div>
+					<MobileNavigation />
 				</div>
-				<NavLinksContainer className="max-md:hidden flex gap-8" />
-				<Button className="max-md:hidden bg-black text-white font-bold">
-					Contact Us
-				</Button>
-				<MobileNavigation />
 			</div>
 		</nav>
 	);

@@ -26,7 +26,11 @@ export default function MobileNavigation() {
 					alt="burger"
 				/>
 			</button>
-			<div className={"md:hidden col-span-2" + (menuExpanded ? "" : " hidden")}>
+			<div
+				className={
+					"md:hidden col-span-2 pt-8" + (menuExpanded ? "" : " hidden")
+				}
+			>
 				<NavLinksContainer />
 			</div>
 		</>

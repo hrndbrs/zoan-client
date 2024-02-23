@@ -12,12 +12,12 @@ export default function NavLink({
 }: NavLinkProps) {
 	return (
 		<li
-			className={
-				`flex items-center max-md:mb-9 ` + (className ? className : "")
-			}
+			className={`flex items-center ` + (className ? className : "")}
 			{...props}
 		>
-			<Link href={path}>{children}</Link>
+			<Link href={path} className="max-md:pb-8">
+				{children}
+			</Link>
 		</li>
 	);
 }
