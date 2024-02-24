@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export interface NavLinkProps extends React.LiHTMLAttributes<{}> {
 	path: string;
@@ -11,11 +12,8 @@ export default function NavLink({
 	...props
 }: NavLinkProps) {
 	return (
-		<li
-			className={`flex items-center ` + (className ? className : "")}
-			{...props}
-		>
-			<Link href={path} className="max-md:pb-8">
+		<li className={cn("flex", "items-center", className)} {...props}>
+			<Link href={path} className="w-full max-md:pb-8">
 				{children}
 			</Link>
 		</li>

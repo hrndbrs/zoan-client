@@ -37,7 +37,7 @@ export default function NavLinksContainer({
 	...props
 }: NavLinksContainerProps) {
 	return (
-		<ul className={`${className}`} {...props}>
+		<ul className={className} {...props}>
 			{routes.map((route, idx) => (
 				<NavLink {...navLinkProps} path={route.path} key={idx}>
 					{route.name}
