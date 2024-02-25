@@ -27,7 +27,10 @@ export default function Banner({ bannerImages }: { bannerImages: string[] }) {
       </CarouselContent>
       <CarouselPrevious className="carousel-arrow-prev opacity-0 group-hover:opacity-[0.32]" />
       <CarouselNext className="carousel-arrow-next opacity-0 group-hover:opacity-[0.32]" />
-      <CarouselStepperIndicator length={bannerImages.length} />
+      <CarouselStepperIndicator
+        className="opacity-0 group-hover:opacity-100 transition-all duration-300"
+        length={bannerImages.length}
+      />
     </Carousel>
   );
 }
