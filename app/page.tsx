@@ -1,4 +1,4 @@
-import { Banner, CategoriesContainer } from "@/components/shared";
+import { Banner, CategoriesContainer, CallToAction } from "@/components/shared";
 import { categories } from "@/lib/mockData";
 
 const banners = [
@@ -12,6 +12,7 @@ export default function Home() {
     <div>
       <Banner bannerImages={banners} />
       <CategoriesContainer categories={categories} />
+      <CallToAction />
     </div>
   );
 }
