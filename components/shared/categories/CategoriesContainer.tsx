@@ -28,6 +28,7 @@ export default function CategoriesContainer({ categories }: { categories: Catego
             imageUrl={category.imageUrl}
             titleClass="text-3xl max-md:text-2xl"
             contentClass="items-start"
+            innerContentClass="!gap-1"
           >
             <Link href={`/categories/${category.slug}`}>
               <Button variant="default-2">See More</Button>
@@ -38,6 +39,7 @@ export default function CategoriesContainer({ categories }: { categories: Catego
           title="For more info"
           description="Lorem ipsum dolor sit amet, consectur adipiscing elit."
           titleClass="text-3xl max-md:text-2xl"
+          innerContentClass="!gap-1"
         >
           <Link href="/contact-us">
             <Button className="self-start" variant="default-1">

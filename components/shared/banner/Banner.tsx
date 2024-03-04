@@ -17,6 +17,7 @@ export default function Banner({ bannerImages }: { bannerImages: string[] }) {
       <Carousel
         opts={{
           align: "center",
+          watchDrag: false,
         }}
         className="group"
       >
