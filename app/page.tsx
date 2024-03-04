@@ -1,4 +1,5 @@
-import { Banner } from "@/components/shared";
+import { Banner, CategoriesContainer } from "@/components/shared";
+import { categories } from "@/lib/mockData";
 
 const banners = [
   "/images/banners/jumbotron-1.png",
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <div>
       <Banner bannerImages={banners} />
+      <CategoriesContainer categories={categories} />
     </div>
   );
 }

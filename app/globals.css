@@ -14,7 +14,7 @@
 
 @layer utilities {
   .inner-container {
-    @apply flex items-center justify-center max-w-7xl mx-auto;
+    @apply flex items-center justify-center max-w-[75rem] mx-auto;
   }
 }
 
@@ -38,6 +38,8 @@
 }
 
 @layer components {
+  /* CAROUSEL */
+
   .carousel-arrow-next,
   .carousel-arrow-prev {
     @apply transition-all duration-300 disabled:opacity-0 w-[5%] aspect-square !important;
@@ -49,5 +51,11 @@
 
   .carousel-arrow-next {
     @apply right-6 max-md:right-2 !important;
+  }
+
+  /* PRODUCT CATEGORIES */
+
+  .category-card {
+    @apply rounded-none border-natural-9 max-w-sm lg:max-w-[32%] md:max-w-[38%] !important;
   }
 }
