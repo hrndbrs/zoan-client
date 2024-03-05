@@ -5,7 +5,7 @@ import LogoContainer from "../LogoContainer";
 
 export default function NavigationMenu() {
   return (
-    <nav className="w-full bg-natural-1 py-3 px-5">
+    <nav className="relative w-full bg-natural-1 py-3 px-5 z-[1000]">
       <div className="inner-container">
         <div className="w-full grid grid-cols-4 max-md:grid-cols-2">
           <LogoContainer fileName="zoan-h-dark.svg" className="flex items-stretch" />
