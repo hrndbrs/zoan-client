@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply font-barlow text-base;
+    @apply font-barlow text-base text-natural-9;
   }
 }
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CategoryType } from "@/lib/mockData";
-import CustomCard from "../custom-card/CustomCard";
+import { CustomCard } from "@/components/shared";
 
 export default function CategoriesContainer({ categories }: { categories: CategoryType[] }) {
   return (

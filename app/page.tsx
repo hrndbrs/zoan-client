@@ -1,4 +1,5 @@
-import { Banner, CategoriesContainer, CallToAction } from "@/components/shared";
+import { Banner, CategoriesContainer } from "@/components/sections/home";
+import { CallToAction } from "@/components/shared";
 import { categories } from "@/lib/mockData";
 
 const banners = [
