@@ -10,10 +10,10 @@ const banners = [
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Banner bannerImages={banners} />
       <CategoriesContainer categories={categories} />
       <CallToAction />
-    </div>
+    </>
   );
 }
