@@ -6,7 +6,7 @@ import { companyProfile } from "@/lib/mockData";
 export default function LabelTop() {
   return (
     <div className="bg-natural-9 text-white px-5 py-2 max-md:hidden">
-      <div className="inner-container md:justify-between text-xs">
+      <div className="inner-container md:justify-between text-body-12">
         <div className="flex gap-6">
           <div className="flex items-center gap-1">
             <MdLocalPhone size={16} />

@@ -53,7 +53,7 @@ export default function CustomCard({
         )}
         <div className={cn("flex flex-col gap-6", innerContentClass)}>
           <CardTitle className={cn("uppercase font-bold", titleClass)}>{title}</CardTitle>
-          <CardDescription className={cn("text-base", descriptionClass)}>
+          <CardDescription className={cn("text-body-16", descriptionClass)}>
             {description}
           </CardDescription>
         </div>

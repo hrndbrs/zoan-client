@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="w-full flex items-center justify-center border-t-[1px] pt-4">
-          <div className="flex gap-6 text-xs max-md:grid max-md:grid-cols-2">
+          <div className="flex gap-6 text-body-12 max-md:grid max-md:grid-cols-2">
             <span className="text-center max-md:col-span-2">2024 Zoan All right reserved</span>
             <span className="text-center">Privacy Policy</span>
             <span className="text-center">Terms of Service</span>

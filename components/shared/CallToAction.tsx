@@ -23,8 +23,8 @@ export default function CallToAction({ className, ...props }: React.HTMLAttribut
           />
         </div>
         <div className="flex flex-col items-center gap-3 text-center">
-          <h2 className="text-6xl uppercase font-bold">Need Any Help?</h2>
-          <div className="flex flex-col items-center">
+          <h3 className="text-h3 uppercase font-bold">Need Any Help?</h3>
+          <div className="flex flex-col items-center max-md:font-bold">
             <p className="text-center">Do you have any question about our products</p>
             <p className="text-center">Don&apos;t worry, we are here to help you!</p>
           </div>

@@ -42,13 +42,52 @@
   }
 
   body {
-    @apply font-barlow text-base text-natural-9;
+    @apply font-barlow text-body-16 text-natural-9;
   }
 }
 
 @layer utilities {
   .inner-container {
     @apply flex items-center justify-center max-w-[75rem] mx-auto;
+  }
+
+  .text-h1 {
+    font-size: 7.5rem;
+    line-height: 1.2;
+  }
+  .text-h2 {
+    font-size: 5rem;
+    line-height: 1.2;
+  }
+  .text-h3 {
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+  .text-h4 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .text-h5,
+  .text-body-24 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  .text-h6,
+  .text-body-20 {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+  .text-body-16 {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+  .text-body-12 {
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+  .text-body-10 {
+    font-size: 0.625rem;
+    line-height: 1.2;
   }
 }
 

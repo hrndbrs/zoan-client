@@ -11,7 +11,7 @@ export default function CategoriesContainer({ categories }: { categories: Catego
           className="!border-none !shadow-none"
           title="Our products"
           description="From Servers, IOT Devices, Notebook, Desktop & Workstation to All-in-one PC"
-          titleClass="text-6xl"
+          titleClass="text-h3 max-md:text-h4"
         >
           <Link href="/categories">
             <Button className="self-start" variant="default-2">
@@ -26,9 +26,9 @@ export default function CategoriesContainer({ categories }: { categories: Catego
             description={category.description}
             icon={category.icon}
             imageUrl={category.imageUrl}
-            titleClass="text-3xl max-md:text-2xl"
+            titleClass="text-h4 max-md:text-h5"
             contentClass="items-start"
-            innerContentClass="!gap-1"
+            innerContentClass="!gap-1 max-md:font-bold"
           >
             <Link href={`/categories/${category.slug}`}>
               <Button variant="default-2">See More</Button>

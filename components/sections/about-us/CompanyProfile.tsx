@@ -1,10 +1,10 @@
 import Image from "next/image";
-import ContentWrapper from "./ContentWrapper";
+import { SplitContentWrapper } from "@/components/shared";
 
 export default function CompanyProfile() {
   return (
     <section id="company-profile" className="px-5 py-[7.5rem] max-md:py-16">
-      <ContentWrapper
+      <SplitContentWrapper
         left={
           <div className="relative max-md:hidden">
             <Image
@@ -19,7 +19,7 @@ export default function CompanyProfile() {
         }
         right={
           <div className="flex flex-col gap-6">
-            <h1 className="text-6xl uppercase font-bold max-md:text-3xl">About Us</h1>
+            <h3 className="text-h3 uppercase font-bold max-md:text-h4">About Us</h3>
             <p>
               <strong>Zoan Computing</strong> is the most up to date technology with Integrated
               Solution through research & development from the experts team to produce
