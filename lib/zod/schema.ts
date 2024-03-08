@@ -3,7 +3,7 @@ import { z } from "zod";
 export const contactFormSchema = z
   .object({
     name: z.string(),
-    telephone: z.string(),
+    phone: z.string(),
     city: z.string(),
     messsage: z.string(),
   })
@@ -21,3 +21,6 @@ export const warrantyClaimFormSchema = z
     address: z.string(),
   })
   .required();
+
+export type ContactFormSchemaType = z.infer<typeof contactFormSchema>;
+export type WarrantyClaimFormSchemaType = z.infer<typeof warrantyClaimFormSchema>;

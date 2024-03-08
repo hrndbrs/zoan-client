@@ -1,3 +1,4 @@
+import Link from "next/link";
 import NavLinksContainer from "./NavLinksContainer";
 import MobileNavigation from "./MobileNavigation";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,9 @@ export default function NavigationMenu() {
           <LogoContainer fileName="zoan-h-dark.svg" className="flex items-stretch" />
           <NavLinksContainer className="flex justify-center gap-8 col-span-2 max-md:hidden" />
           <div className="flex justify-end items-center max-md:hidden">
-            <Button>Contact Us</Button>
+            <Link href="/contact">
+              <Button>Contact Us</Button>
+            </Link>
           </div>
           <MobileNavigation />
         </div>

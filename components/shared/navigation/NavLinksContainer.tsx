@@ -1,33 +1,11 @@
 import { Button } from "@/components/ui/button";
 import NavLink, { NavLinkProps } from "./NavLink";
+import { routes } from "@/assets/static";
 
 interface NavLinksContainerProps extends React.HTMLAttributes<HTMLUListElement> {
   navLinkProps?: Omit<NavLinkProps, "path">;
   showButton?: boolean;
 }
-
-const routes = [
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "About Us",
-    path: "/about-us",
-  },
-  {
-    name: "Products",
-    path: "/products",
-  },
-  {
-    name: "Warranty",
-    path: "/warranty",
-  },
-  {
-    name: "News & Blogs",
-    path: "/news",
-  },
-];
 
 export default function NavLinksContainer({
   className,

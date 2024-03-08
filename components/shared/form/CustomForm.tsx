@@ -59,6 +59,7 @@ export default function CustomForm({
 
           return (
             <FormField
+              control={form.control}
               key={name}
               name={name}
               render={({ field }) => {
@@ -98,7 +99,9 @@ export default function CustomForm({
             />
           );
         })}
-        <Button className={buttonClassName}>{children || "Submit"}</Button>
+        <Button type="submit" className={buttonClassName}>
+          {children || "Submit"}
+        </Button>
       </form>
     </Form>
   );

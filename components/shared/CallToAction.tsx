@@ -28,7 +28,7 @@ export default function CallToAction({ className, ...props }: React.HTMLAttribut
             <p className="text-center">Do you have any question about our products</p>
             <p className="text-center">Don&apos;t worry, we are here to help you!</p>
           </div>
-          <Link href="/contact-us" className="pt-4">
+          <Link href="/contact" className="pt-4">
             <Button>Contact Us</Button>
           </Link>
         </div>

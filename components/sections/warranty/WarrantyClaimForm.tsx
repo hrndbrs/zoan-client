@@ -1,6 +1,6 @@
 "use client";
 
-import { warrantyClaimFormSchema } from "@/lib/zod/schema";
+import { warrantyClaimFormSchema, WarrantyClaimFormSchemaType } from "@/lib/zod/schema";
 import { InputFieldProps } from "@/components/shared/form/CustomForm";
 import { CustomForm } from "@/components/shared";
 import { categories } from "@/lib/mockData";
@@ -24,7 +24,8 @@ export default function WarrantyClaimForm() {
     { name: "purchaseDate", type: "date", inputType: "date" },
     { name: "address", inputType: "textarea" },
   ];
-  function handleSubmit(values: any) {
+
+  function handleSubmit(values: WarrantyClaimFormSchemaType) {
     console.log(values);
   }
   return (
@@ -33,7 +34,7 @@ export default function WarrantyClaimForm() {
         <p className="text-body-16 uppercase font-bold">Services</p>
         <h3 className="text-h3 uppercase font-bold max-md:text-h4">Warranty Claim</h3>
         <p className="text-body-16">
-          Please fill out form below completely to make a warrayt claim for ZOAN products.
+          Please fill out form below completely to make a warranty claim for ZOAN products.
         </p>
       </div>
       <div className="inner-container !max-w-3xl">
