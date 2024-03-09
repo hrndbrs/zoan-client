@@ -2,32 +2,45 @@ import { Card, CardDescription, CardTitle, CardContent } from "@/components/ui/c
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-interface CustomCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  imageUrl?: string;
-  icon?: string;
+interface CustomCardBaseProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   description: React.ReactNode;
-  titleClass?: string;
-  descriptionClass?: string;
-  contentClass?: string;
-  innerContentClass?: string;
+  imageUrl?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
+  contentClassName?: string;
+  innerContentClassName?: string;
 }
+
+export enum IconSize {
+  SM = "h-8",
+  MD = "h-[2.625rem]",
+}
+
+type CustomCardProps = CustomCardBaseProps &
+  (
+    | {
+        icon: string;
+        iconSize?: IconSize;
+        iconClassName?: string;
+      }
+    | { icon?: undefined }
+  );
 
 export default function CustomCard({
   children,
   title,
   description,
   imageUrl,
-  icon,
   className,
-  titleClass,
-  descriptionClass,
-  contentClass,
-  innerContentClass,
+  titleClassName,
+  descriptionClassName,
+  contentClassName,
+  innerContentClassName,
   ...props
 }: CustomCardProps) {
   return (
-    <Card className={cn("category-card", className)} {...props}>
+    <Card className={className} {...props}>
       {imageUrl ? (
         <div className="w-full relative aspect-[600/396] overflow-hidden">
           <Image src={imageUrl} fill style={{ objectFit: "cover" }} alt={title} />
@@ -35,11 +48,17 @@ export default function CustomCard({
       ) : (
         ""
       )}
-      <CardContent className={cn("flex flex-col gap-6 p-8", contentClass)}>
-        {icon ? (
-          <div className="relative w-full flex h-8">
+      <CardContent className={cn("flex flex-col gap-6 p-8", contentClassName)}>
+        {props.icon ? (
+          <div
+            className={cn(
+              "relative w-full flex",
+              props.iconSize ? props.iconSize : IconSize.SM,
+              props.iconClassName,
+            )}
+          >
             <Image
-              src={icon}
+              src={props.icon}
               fill
               style={{
                 objectFit: "none",
@@ -51,9 +70,9 @@ export default function CustomCard({
         ) : (
           ""
         )}
-        <div className={cn("flex flex-col gap-6", innerContentClass)}>
-          <CardTitle className={cn("uppercase font-bold", titleClass)}>{title}</CardTitle>
-          <CardDescription className={cn("text-body-16", descriptionClass)}>
+        <div className={cn("flex flex-col gap-6", innerContentClassName)}>
+          <CardTitle className={cn("uppercase font-bold", titleClassName)}>{title}</CardTitle>
+          <CardDescription className={cn("text-body-16", descriptionClassName)}>
             {description}
           </CardDescription>
         </div>
