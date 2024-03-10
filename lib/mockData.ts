@@ -57,6 +57,32 @@ export const detailedCategories = [
     imageUrl: "/images/categories/03-server.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    products: [
+      {
+        name: "Zoan ST160-Z2-PI5",
+        type: "Tower",
+        thumbnail: "/images/products/DSC00963 1.png",
+        slug: "Zoan-ST160-Z2-PI5",
+      },
+      {
+        name: "Zoan ST560-Z2-PS4",
+        type: "Tower",
+        thumbnail: "/images/products/DSC01112 3.png",
+        slug: "Zoan-ST560-Z2-PS4",
+      },
+      {
+        name: "ST160-R502-Z2-RS4",
+        type: "Rackmount 1U",
+        thumbnail: "/images/products/DSC00944 1.png",
+        slug: "ST160-R502-Z2-RS4",
+      },
+      {
+        name: "ST160-R522-Z2-RS12",
+        type: "Rackmount 2U",
+        thumbnail: "/images/products/DSC00888 1.png",
+        slug: "ST160-R522-Z2-RS12",
+      },
+    ],
   },
   {
     name: "Internet Of Things",
@@ -65,6 +91,7 @@ export const detailedCategories = [
     imageUrl: "/images/categories/01-iot.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    products: [],
   },
   {
     name: "Notebook",
@@ -73,6 +100,7 @@ export const detailedCategories = [
     imageUrl: "/images/categories/06-notebook.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    products: [],
   },
   {
     name: "All In One PC",
@@ -81,6 +109,14 @@ export const detailedCategories = [
     imageUrl: "/images/categories/04-all-in-one-pc.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    products: [
+      {
+        name: "Zoan AIO PC EMERALD P200X",
+        type: "All in one PC",
+        thumbnail: "/images/products/DSC01001 1.png",
+        slug: "Zoan-AIO-PC-EMERALD-P200X",
+      },
+    ],
   },
   {
     name: "Desktop Monitor",
@@ -89,6 +125,20 @@ export const detailedCategories = [
     imageUrl: "/images/categories/02-desktop&workstation.png",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    products: [
+      {
+        name: "Zoan Workstation PC",
+        type: "Workstation",
+        thumbnail: "/images/products/WKST002 1.png",
+        slug: "Zoan-Workstation-PC",
+      },
+      {
+        name: "Zoan Monitor (19.5”, 21.5”,23.8”)",
+        type: "Monitor",
+        thumbnail: "/images/products/MNTR001 1.png",
+        slug: "Zoan-Monitor-(19.5”,21.5”,23.8”)",
+      },
+    ],
   },
 ];
 
