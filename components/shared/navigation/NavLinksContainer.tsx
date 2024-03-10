@@ -25,7 +25,7 @@ export default function NavLinksContainer({
           <Button>Contact Us</Button>
         </li>
       ) : (
-        <NavLink {...navLinkProps} path="/contact">
+        <NavLink {...navLinkProps} path="/contact-us">
           Contact
         </NavLink>
       )}

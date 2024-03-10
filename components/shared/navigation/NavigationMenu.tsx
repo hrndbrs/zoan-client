@@ -12,7 +12,7 @@ export default function NavigationMenu() {
           <LogoContainer fileName="zoan-h-dark.svg" className="flex items-stretch" />
           <NavLinksContainer className="flex justify-center gap-8 col-span-2 max-md:hidden" />
           <div className="flex justify-end items-center max-md:hidden">
-            <Link href="/contact">
+            <Link href="/contact-us">
               <Button>Contact Us</Button>
             </Link>
           </div>

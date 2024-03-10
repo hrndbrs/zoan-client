@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CategoryType } from "@/lib/mockData";
-import { CustomCard } from "@/components/shared";
-import { IconSize } from "@/components/shared/CustomCard";
+import { CustomCard, IconSize } from "@/components/shared";
 
 export default function CategoriesContainer({ categories }: { categories: CategoryType[] }) {
   return (
@@ -33,7 +32,7 @@ export default function CategoriesContainer({ categories }: { categories: Catego
             contentClassName="items-start"
             innerContentClassName="!gap-1 max-md:font-bold"
           >
-            <Link href={`/categories/${category.slug}`}>
+            <Link href={`/products/${category.slug}`}>
               <Button variant="default-2">See More</Button>
             </Link>
           </CustomCard>

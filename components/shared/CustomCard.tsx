@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 interface CustomCardBaseProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   description: React.ReactNode;
-  imageUrl?: string;
   titleClassName?: string;
   descriptionClassName?: string;
   contentClassName?: string;
@@ -25,13 +24,21 @@ type CustomCardProps = CustomCardBaseProps &
         iconClassName?: string;
       }
     | { icon?: undefined }
+  ) &
+  (
+    | {
+        imageUrl: string;
+        imageClassName?: string;
+      }
+    | {
+        imageUrl?: undefined;
+      }
   );
 
 export default function CustomCard({
   children,
   title,
   description,
-  imageUrl,
   className,
   titleClassName,
   descriptionClassName,
@@ -41,9 +48,11 @@ export default function CustomCard({
 }: CustomCardProps) {
   return (
     <Card className={className} {...props}>
-      {imageUrl ? (
-        <div className="w-full relative aspect-[600/396] overflow-hidden">
-          <Image src={imageUrl} fill style={{ objectFit: "cover" }} alt={title} />
+      {props.imageUrl ? (
+        <div
+          className={cn("w-full relative aspect-[600/396] overflow-hidden", props.imageClassName)}
+        >
+          <Image src={props.imageUrl} fill style={{ objectFit: "cover" }} alt={title} />
         </div>
       ) : (
         ""

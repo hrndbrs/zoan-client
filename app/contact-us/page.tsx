@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { SplitContentWrapper, CustomForm } from "@/components/shared";
+import { SplitContentWrapper, CustomForm, BreadCrumb } from "@/components/shared";
 import { InputFieldProps } from "@/components/shared/form/CustomForm";
 import { contactFormSchema, ContactFormSchemaType } from "@/lib/zod/schema";
 
@@ -32,7 +32,8 @@ export default function ContactUs() {
         left={
           <div>
             <div className="flex flex-col mb-8 gap-4">
-              <p className="text-body-12 underline">Contact us</p>
+              <BreadCrumb />
+              {/* <p className="text-body-12 underline">Contact us</p> */}
               <h3 className="text-h3 uppercase font-bold max-md:text-h4">Get In Touch</h3>
               <p className="text-body-16">Don&apos;t worry, we are ready to help you</p>
             </div>

@@ -17,6 +17,6 @@ export const routes = [
   },
   {
     name: "News & Blogs",
-    path: "/news",
+    path: "/read",
   },
 ];
