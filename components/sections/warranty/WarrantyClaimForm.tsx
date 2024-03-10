@@ -2,7 +2,7 @@
 
 import { warrantyClaimFormSchema, WarrantyClaimFormSchemaType } from "@/lib/zod/schema";
 import { InputFieldProps } from "@/components/shared/form/CustomForm";
-import { CustomForm } from "@/components/shared";
+import { CustomForm, SectionHeader } from "@/components/shared";
 import { categories } from "@/lib/mockData";
 
 export default function WarrantyClaimForm() {
@@ -30,13 +30,11 @@ export default function WarrantyClaimForm() {
   }
   return (
     <section id="warranty-form" className="px-5 py-6">
-      <div className="flex flex-col mb-12 gap-4 md:items-center">
-        <p className="text-body-16 uppercase font-bold">Services</p>
-        <h3 className="text-h3 uppercase font-bold max-md:text-h4">Warranty Claim</h3>
-        <p className="text-body-16">
-          Please fill out form below completely to make a warranty claim for ZOAN products.
-        </p>
-      </div>
+      <SectionHeader
+        title="Warranty Claim"
+        subtitle="Services"
+        description="Please fill out form below completely to make a warranty claim for ZOAN products."
+      />
       <div className="inner-container !max-w-3xl">
         <CustomForm
           schema={warrantyClaimFormSchema}
