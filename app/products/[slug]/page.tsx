@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CustomCard } from "@/components/shared";
 import { Button } from "@/components/ui/button";
-import { detailedCategories } from "@/lib/mockData";
+import { categories } from "@/lib/mockData";
 
 type RouteParamsType = {
   slug: string;
@@ -9,7 +9,7 @@ type RouteParamsType = {
 
 export default function CategoryProducts({ params }: { params: RouteParamsType }) {
   const { slug } = params;
-  const category = detailedCategories.find((category) => category.slug === slug);
+  const category = categories.find((category) => category.slug === slug);
   if (!category) return <div>no product</div>;
 
   const { name, products, description } = category;

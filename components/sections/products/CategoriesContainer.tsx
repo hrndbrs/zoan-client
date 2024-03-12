@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { detailedCategories } from "@/lib/mockData";
+import { categories } from "@/lib/mockData";
 import { CustomCard, IconSize } from "@/components/shared";
 
 export default function CategoriesContainer() {
   return (
     <div className="inner-container mb-[7.5rem]">
       <div className="w-full grid gap-8 divide-natural-3 md:grid-cols-3 lg:grid-cols-5 max-md:divide-y">
-        {detailedCategories.map(({ icon, name, slug, description }) => (
+        {categories.map(({ icon, name, slug, description }) => (
           <CustomCard
             key={slug}
             title={name}
