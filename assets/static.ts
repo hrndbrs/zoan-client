@@ -20,3 +20,9 @@ export const routes = [
     path: "/read",
   },
 ];
+
+export const banners = [
+  "/images/banners/jumbotron-1.png",
+  "/images/banners/jumbotron-2.png",
+  "/images/banners/jumbotron-3.png",
+];

@@ -1,17 +1,11 @@
 import { Banner, CategoriesContainer } from "@/components/sections/home";
-import { CallToAction } from "@/components/shared";
-import { categories } from "@/lib/mockData";
-
-const banners = [
-  "/images/banners/jumbotron-1.png",
-  "/images/banners/jumbotron-2.png",
-  "/images/banners/jumbotron-3.png",
-];
+import { CallToAction, BlogViewer } from "@/components/shared";
+import { categories, blogs } from "@/lib/mockData";
 
 export default function Home() {
   return (
     <>
-      <Banner bannerImages={banners} />
+      <Banner />
       <CategoriesContainer categories={categories} />
       <CallToAction />
     </>

@@ -8,9 +8,25 @@ import {
   CarouselStepperIndicator,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
+import { getBanners } from "@/services/banners";
+import { banners } from "@/assets/static";
 
-export default function Banner({ bannerImages }: { bannerImages: string[] }) {
+export default async function Banner() {
   const opacityControl = "opacity-0 group-hover:opacity-[0.32] max-md:opacity-[0.32]";
+
+  const res = await getBanners();
+
+  let bannerImages: string[];
+
+  const images = res?.data.attributes.images.data;
+
+  if (images) {
+    bannerImages = images.map(
+      (image) => `${process.env.NEXT_APP_IMAGE_URL}${image.attributes.url}`,
+    );
+  } else {
+    bannerImages = banners;
+  }
 
   return (
     <section id="jumbotron">
