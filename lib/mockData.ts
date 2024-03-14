@@ -157,3 +157,4 @@ export const blogs = [
 ];
 
 export type CategoryType = (typeof categories)[number];
+export type BlogType = (typeof blogs)[number];

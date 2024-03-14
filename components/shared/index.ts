@@ -6,3 +6,4 @@ export { default as CallToAction } from "./CallToAction";
 export { default as SplitContentWrapper } from "./SplitContentWrapper";
 export { default as CustomForm, type CustomFormPropType } from "./form/CustomForm";
 export { default as BreadCrumb } from "./BreadCrumb";
+export { default as BlogViewer } from "./BlogViewer";

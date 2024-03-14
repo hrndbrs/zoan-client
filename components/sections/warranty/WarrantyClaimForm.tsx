@@ -34,6 +34,7 @@ export default function WarrantyClaimForm() {
         title="Warranty Claim"
         subtitle="Services"
         description="Please fill out form below completely to make a warranty claim for ZOAN products."
+        className="md:items-center"
       />
       <div className="inner-container !max-w-3xl">
         <CustomForm

@@ -1,7 +1,6 @@
 "use client";
 
-import Heading from "./Heading";
-import { CustomForm } from "@/components/shared";
+import { CustomForm, SectionHeader, BreadCrumb } from "@/components/shared";
 import { contactFormSchema, ContactFormSchemaType } from "@/lib/zod/schema";
 import { InputFieldProps } from "@/components/shared/form/CustomForm";
 
@@ -28,7 +27,12 @@ export default function ContactForm() {
 
   return (
     <div>
-      <Heading />
+      <SectionHeader
+        title="Get In Touch"
+        subtitle={<BreadCrumb />}
+        description="Don't worry, we are ready to help you"
+        emphasizeSub={false}
+      />
       <CustomForm
         schema={contactFormSchema}
         inputFields={inputFields}

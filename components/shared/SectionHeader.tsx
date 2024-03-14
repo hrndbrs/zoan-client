@@ -1,16 +1,26 @@
-type SectionHeaderPropType = {
-  title: string;
-  subtitle: string;
-  description: string;
-};
+import { cn } from "@/lib/utils";
 
-export default function SectionHeader({ title, subtitle, description }: SectionHeaderPropType) {
+interface SectionHeaderPropType extends React.HTMLAttributes<HTMLDivElement> {
+  title: string;
+  subtitle: string | React.ReactNode;
+  description?: string;
+  emphasizeSub?: boolean;
+}
+
+export default function SectionHeader({
+  title,
+  subtitle,
+  description,
+  className,
+  emphasizeSub = true,
+  ...props
+}: SectionHeaderPropType) {
   return (
-    <div className="flex flex-col mb-12 gap-4 md:items-center">
-      <p className="uppercase font-bold">{subtitle}</p>
-      <div className="flex flex-col gap-6 md:items-center">
+    <div className={cn("flex flex-col mb-12 gap-4", className)} {...props}>
+      <p className={cn(emphasizeSub ? "uppercase font-bold" : "")}>{subtitle}</p>
+      <div className={cn("flex flex-col gap-6", className)}>
         <h3 className="text-h3 uppercase font-bold max-md:text-h4">{title}</h3>
-        <p>{description}</p>
+        {description ? <p>{description}</p> : ""}
       </div>
     </div>
   );
