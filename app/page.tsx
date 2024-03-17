@@ -8,6 +8,7 @@ export default function Home() {
       <Banner />
       <CategoriesContainer />
       <CallToAction />
+      <BlogViewer blogs={blogs} header="News & Blogs" />
     </>
   );
 }

@@ -106,9 +106,9 @@
   border-radius: 50px;
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #7878a3;
-}
+/* .custom-scrollbar::-webkit-scrollbar-thumb:hover { */
+/*   background: #7878a3; */
+/* } */
 
 @layer components {
   /* CAROUSEL */
@@ -129,6 +129,11 @@
   /* PRODUCT CATEGORIES */
 
   .category-card {
-    @apply rounded-none border border-natural-9 max-w-sm lg:max-w-[32%] md:max-w-[38%] !important;
+    @apply rounded-none border border-natural-9 max-w-sm lg:w-[32%] md:w-[38%] !important;
+  }
+
+  .viewer-card {
+    width: clamp(18.75rem, 80vw, 25rem) !important;
+    @apply shadow-md rounded-none shrink-0;
   }
 }

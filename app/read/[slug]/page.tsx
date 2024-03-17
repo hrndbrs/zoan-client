@@ -13,7 +13,7 @@ export default function BlogDetail({ params }: { params: RouteParamsType }) {
   return (
     <>
       <BlogDetailContainer blog={blog} />
-      <BlogViewer blogs={blogs} />
+      <BlogViewer header="Another" blogs={blogs} />
     </>
   );
 }
