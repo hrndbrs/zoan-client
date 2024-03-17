@@ -5,9 +5,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import SelectInput, { SelectOption } from "./SelectInput";
+import SelectInput from "./SelectInput";
 import DatePicker from "./DatePicker";
 import { camelCaseToWords } from "@/lib/helpers";
+import { SelectOption } from "@/lib/types/select-option.type";
+import ComboBox from "./ComboBox";
 
 interface InputFieldBaseProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -67,13 +69,23 @@ export default function CustomForm({
                   <FormItem>
                     <FormLabel>{inputlabel}</FormLabel>
                     {inputField.inputType === "select" ? (
-                      <SelectInput
-                        className="w-full rounded-none border-natural-9"
-                        onValueChange={field.onChange}
-                        value={field.value}
-                        options={inputField.options}
-                        placeholder={placeholder!}
-                      />
+                      inputField.options.length <= 10 ? (
+                        <SelectInput
+                          className="w-full rounded-none border-natural-9"
+                          onValueChange={field.onChange}
+                          value={field.value}
+                          options={inputField.options}
+                          placeholder={placeholder!}
+                        />
+                      ) : (
+                        <ComboBox
+                          className="w-full rounded-none border-natural-9"
+                          onValueChange={(value) => form.setValue(name, value)}
+                          value={field.value}
+                          options={inputField.options}
+                          placeholder={placeholder!}
+                        />
+                      )
                     ) : inputField.inputType === "textarea" ? (
                       <FormControl>
                         <Textarea

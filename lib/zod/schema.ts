@@ -5,7 +5,7 @@ export const contactFormSchema = z
     name: z.string(),
     phone: z.string(),
     city: z.string(),
-    messsage: z.string(),
+    message: z.string(),
   })
   .required();
 

@@ -1,11 +1,14 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { warrantyClaimFormSchema, WarrantyClaimFormSchemaType } from "@/lib/zod/schema";
 import { InputFieldProps } from "@/components/shared/form/CustomForm";
 import { CustomForm, SectionHeader } from "@/components/shared";
-import { categories } from "@/lib/mockData";
+import { getProductCategories } from "@/services/categories";
+import { SelectOption } from "@/lib/types/select-option.type";
 
 export default function WarrantyClaimForm() {
+  const [categories, setCategories] = useState<SelectOption[]>([]);
   const inputFields: InputFieldProps[] = [
     { name: "name" },
     { name: "institutionName" },
@@ -17,9 +20,7 @@ export default function WarrantyClaimForm() {
       label: "Product Category",
       inputType: "select",
       placeholder: "Select one...",
-      options: categories.map(({ slug, name }) => {
-        return { value: slug, label: name };
-      }),
+      options: categories,
     },
     { name: "purchaseDate", type: "date", inputType: "date" },
     { name: "address", inputType: "textarea" },
@@ -28,6 +29,19 @@ export default function WarrantyClaimForm() {
   function handleSubmit(values: WarrantyClaimFormSchemaType) {
     console.log(values);
   }
+
+  useEffect(() => {
+    getProductCategories().then((data) => {
+      if (data)
+        setCategories(
+          data.map((category) => ({
+            value: category.id,
+            label: category.attributes.title,
+          })),
+        );
+    });
+  }, []);
+
   return (
     <section id="warranty-form" className="px-5 py-6">
       <SectionHeader

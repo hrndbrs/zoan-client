@@ -6,19 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FormControl } from "@/components/ui/form";
-
-export type SelectOption = {
-  value: number | string;
-  label: string;
-};
-
-type SelectInputPropType = {
-  options: SelectOption[];
-  placeholder: string;
-  onValueChange(value: string): void;
-  value: string;
-  className?: string;
-};
+import { SelectInputPropType } from "@/lib/types/select-option.type";
 
 export default function SelectInput({
   options,
