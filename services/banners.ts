@@ -5,6 +5,6 @@ import { Carousel } from "@/lib/types/carousel.type";
 export async function getBanners() {
   try {
     const { data } = await api.get<Carousel>("/carousel?populate=*");
-    return data;
+    return data.data.attributes.images.data;
   } catch (error) {}
 }

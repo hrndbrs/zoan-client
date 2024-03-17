@@ -14,11 +14,9 @@ import { banners } from "@/assets/static";
 export default async function Banner() {
   const opacityControl = "opacity-0 group-hover:opacity-[0.32] max-md:opacity-[0.32]";
 
-  const res = await getBanners();
+  const images = await getBanners();
 
   let bannerImages: string[];
-
-  const images = res?.data.attributes.images.data;
 
   if (images) {
     bannerImages = images.map(
