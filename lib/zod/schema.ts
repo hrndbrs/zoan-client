@@ -1,11 +1,13 @@
 import { z } from "zod";
+import { cities } from "@/assets/static";
 
 export const contactFormSchema = z
   .object({
     name: z.string(),
-    phone: z.string(),
-    city: z.string(),
+    phoneNumber: z.string(),
+    city: z.enum(cities),
     message: z.string(),
+    company: z.string(),
   })
   .required();
 

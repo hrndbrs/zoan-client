@@ -19,13 +19,13 @@ export const routes = [
     name: "News & Blogs",
     path: "/read",
   },
-];
+] as const;
 
 export const banners = [
   "/images/banners/jumbotron-1.png",
   "/images/banners/jumbotron-2.png",
   "/images/banners/jumbotron-3.png",
-];
+] as const;
 
 export const cities = [
   "Kota Banda Aceh",
@@ -542,4 +542,4 @@ export const cities = [
   "Kab. Fak Fak",
   "Kab. Manokwari",
   "Kab. Sorong",
-];
+] as const;

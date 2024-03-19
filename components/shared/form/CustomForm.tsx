@@ -50,11 +50,9 @@ export default function CustomForm({
     defaultValues,
   });
 
-  const handleSubmit = form.handleSubmit(onSubmit);
-
   return (
     <Form {...form}>
-      <form className="w-full flex flex-col gap-6" onSubmit={handleSubmit}>
+      <form className="w-full flex flex-col gap-6" action={onSubmit}>
         {inputFields.map((inputField) => {
           const { name, label, placeholder } = inputField;
           const inputlabel = label || camelCaseToWords(name);
