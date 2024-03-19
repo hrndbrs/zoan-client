@@ -144,4 +144,18 @@
     width: clamp(18.75rem, 80vw, 25rem) !important;
     @apply shadow-md rounded-none shrink-0;
   }
+
+  /* NAVIGATION LINK */
+
+  .nav-link {
+    @apply cust-underline;
+  }
+
+  .nav-link::after {
+    @apply w-2 h-[0.125rem] transition-all duration-300 -bottom-[0.125rem];
+  }
+
+  .nav-link::after:hover {
+    @apply w-full;
+  }
 }

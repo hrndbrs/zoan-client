@@ -10,7 +10,10 @@ export default function NavigationMenu() {
       <div className="inner-container">
         <div className="w-full grid grid-cols-4 max-md:grid-cols-2">
           <LogoContainer fileName="zoan-h-dark.svg" className="flex items-stretch" />
-          <NavLinksContainer className="flex justify-center gap-8 col-span-2 max-md:hidden" />
+          <NavLinksContainer
+            className="flex justify-center gap-8 col-span-2 max-md:hidden"
+            navLinkProps={{ className: "nav-link" }}
+          />
           <div className="flex justify-end items-center max-md:hidden">
             <Link href="/contact-us">
               <Button>Contact Us</Button>

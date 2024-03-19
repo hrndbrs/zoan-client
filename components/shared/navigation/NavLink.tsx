@@ -1,21 +1,26 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export interface NavLinkProps extends React.LiHTMLAttributes<{}> {
-	path: string;
+  path: string;
+  hoverEffect?: boolean;
 }
 
-export default function NavLink({
-	className,
-	path,
-	children,
-	...props
-}: NavLinkProps) {
-	return (
-		<li className={cn("flex", "items-center", className)} {...props}>
-			<Link href={path} className="w-full max-md:pb-8">
-				{children}
-			</Link>
-		</li>
-	);
+export default function NavLink({ className, path, children, ...props }: NavLinkProps) {
+  const pathname = usePathname();
+  const isActive = pathname === path;
+
+  return (
+    <li className="flex items-center" {...props}>
+      <Link
+        href={path}
+        className={cn("w-full max-md:pb-8", className, isActive ? "after:w-full" : "")}
+      >
+        {children}
+      </Link>
+    </li>
+  );
 }
