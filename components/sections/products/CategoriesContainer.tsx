@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { categories } from "@/lib/mockData";
+// import { categories } from "@/lib/mockData";
 import { CustomCard, IconSize } from "@/components/shared";
-import { getProductCategories } from "@/services/categories";
+import { getProductCategories } from "@/services/categories.service";
 import { formatCategoryList } from "@/lib/helpers";
 
 export default async function CategoriesContainer() {

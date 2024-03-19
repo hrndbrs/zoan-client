@@ -8,7 +8,7 @@ import {
   CarouselStepperIndicator,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
-import { getBanners } from "@/services/banners";
+import { getBanners } from "@/services/banners.service";
 import { banners } from "@/assets/static";
 
 export default async function Banner() {

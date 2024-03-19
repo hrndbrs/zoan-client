@@ -1,30 +1,34 @@
 import Link from "next/link";
 import { CustomCard } from "@/components/shared";
 import { Button } from "@/components/ui/button";
-import { categories } from "@/lib/mockData";
+import { getProductsByCategory } from "@/services/categories.service";
+// import { categories } from "@/lib/mockData";
 
 type RouteParamsType = {
-  slug: string;
+  categorySlug: string;
 };
 
-export default function CategoryProducts({ params }: { params: RouteParamsType }) {
-  const { slug } = params;
-  const category = categories.find((category) => category.slug === slug);
+export default async function CategoryProducts({ params }: { params: RouteParamsType }) {
+  const { categorySlug } = params;
+
+  const category = await getProductsByCategory(categorySlug);
+  // const category = categories.find((category) => category.slug === categorySlug);
   if (!category) return <div>no product</div>;
 
-  const { name, products, description } = category;
+  const { title, products, subTitle } = category;
 
   return (
     <div className="inner-container flex-col mb-[7.5rem]">
       <div className="w-full mb-8">
-        <h3 className="text-h3 py-4 uppercase font-bold max-md:text-h4">{name}</h3>
-        <p>{description}</p>
+        <h3 className="text-h3 py-4 uppercase font-bold max-md:text-h4">{title}</h3>
+        <p>{subTitle}</p>
       </div>
       <div className="w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {products.map((product) => (
+        {products.data.map(({ attributes: product }) => (
           <CustomCard
-            key={product.slug}
-            imageUrl={product.thumbnail}
+            key={product.name}
+            // imageUrl={product.thumbnail}
+            imageUrl="/images/placeholder.png"
             title={product.name}
             description={product.type}
             className="max-sm:px-5"
@@ -33,7 +37,7 @@ export default function CategoryProducts({ params }: { params: RouteParamsType }
             innerContentClassName="items-center gap-2"
             titleClassName="text-h6 normal-case"
           >
-            <Link className="w-full" href={`/products/${slug}/${product.slug}`}>
+            <Link className="w-full" href={`/products/${categorySlug}/${product.name}`}>
               <Button className="w-full">See Details</Button>
             </Link>
           </CustomCard>

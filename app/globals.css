@@ -89,6 +89,14 @@
     font-size: 0.625rem;
     line-height: 1.2;
   }
+
+  .cust-underline {
+    @apply relative;
+  }
+
+  .cust-underline::after {
+    @apply content-[""] bg-natural-9 h-1 absolute bottom-0 left-0;
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar {

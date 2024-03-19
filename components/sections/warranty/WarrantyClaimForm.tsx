@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { warrantyClaimFormSchema, WarrantyClaimFormSchemaType } from "@/lib/zod/schema";
 import { InputFieldProps } from "@/components/shared/form/CustomForm";
 import { CustomForm, SectionHeader } from "@/components/shared";
-import { getProductCategories } from "@/services/categories";
+import { getProductCategories } from "@/services/categories.service";
 import { SelectOption } from "@/lib/types/select-option.type";
 
 export default function WarrantyClaimForm() {
