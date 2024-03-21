@@ -1,22 +1,32 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { CustomCard } from ".";
 import { Button } from "@/components/ui/button";
 import useOnClickScroll from "@/hooks/useOnClickScroll";
-import { BlogType } from "@/lib/mockData";
-import { formatDate } from "@/lib/helpers";
+import { appendImageUrl, formatDate } from "@/lib/helpers";
+import { BlogData } from "@/lib/types/blogs.type";
+import { getLatestBlogs } from "@/services/blogs.service";
 
 type BlogViewerPropType = {
-  blogs: BlogType[];
   header?: string;
   showScrollButton?: boolean;
 };
 
-export default function BlogViewer({ blogs, header, showScrollButton = true }: BlogViewerPropType) {
+export default function BlogViewer({ header, showScrollButton = true }: BlogViewerPropType) {
+  const [blogs, setBlogs] = useState<BlogData[]>([]);
+
   const { scrollAreaRef, scrollLeft, scrollRight } = useOnClickScroll();
+
+  useEffect(() => {
+    getLatestBlogs().then((data) => {
+      if (data) setBlogs(data);
+    });
+  }, []);
+
   return (
     <section className="px-5 py-16 bg-natural-1">
       {header || showScrollButton ? (
@@ -52,26 +62,27 @@ export default function BlogViewer({ blogs, header, showScrollButton = true }: B
       )}
       <ScrollArea ref={scrollAreaRef} className="w-full whitespace-nowrap">
         <div className="max-w-[75rem] mx-auto flex mb-8 space-x-6 max-md:space-x-3">
-          {blogs.map((blog) => (
+          {blogs.map(({ id, attributes: blog }) => (
             <CustomCard
-              key={blog.slug}
-              imageUrl={blog.thumbnail}
+              key={id}
+              imageUrl={appendImageUrl(blog.banner.data.attributes.url)}
               title={blog.title}
               description={
                 <>
-                  <p>{formatDate(blog.publishedDate)}</p>
-                  <p className="line-clamp-4 whitespace-normal text-justify max-md:line-clamp-6">
-                    {blog.content}
-                  </p>
+                  <p>{formatDate(new Date(blog.publishedAt))}</p>
+                  <div
+                    className="line-clamp-4 whitespace-normal text-justify max-md:line-clamp-6"
+                    dangerouslySetInnerHTML={{ __html: blog.content }}
+                  />
                 </>
               }
               className="viewer-card"
               contentClassName="py-3 px-4"
-              titleClassName="text-h5"
+              titleClassName="text-h5 whitespace-normal line-clamp-1"
               innerContentClassName="gap-1"
               descriptionClassName="max-md:font-bold"
             >
-              <Link className="self-end" href={`/read/${blog.slug}`}>
+              <Link className="self-end" href={`/read/${blog.title}`}>
                 <Button variant="default-2">Read</Button>
               </Link>
             </CustomCard>

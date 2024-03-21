@@ -10,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 import { getBanners } from "@/services/banners.service";
 import { banners } from "@/assets/static";
+import { appendImageUrl } from "@/lib/helpers";
 
 export default async function Banner() {
   const opacityControl = "opacity-0 group-hover:opacity-[0.32] max-md:opacity-[0.32]";
@@ -19,9 +20,7 @@ export default async function Banner() {
   let bannerImages: string[];
 
   if (images) {
-    bannerImages = images.map(
-      (image) => `${process.env.NEXT_APP_IMAGE_URL}${image.attributes.url}`,
-    );
+    bannerImages = images.map((image) => appendImageUrl(image.attributes.url));
   } else {
     bannerImages = banners;
   }

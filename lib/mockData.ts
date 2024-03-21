@@ -1,11 +1,3 @@
-export const companyProfile = {
-  phoneNumber: "+62 817 8888 22",
-  address: "Wisma 77, Tower 1 - 15th floor, Jl Letjen S Parman Kav 77",
-  facebook: "https://facebook.com",
-  instagram: "https://instagram.com",
-  linkedin: "https://linkedin.com",
-};
-
 export const categories = [
   {
     name: "Server",

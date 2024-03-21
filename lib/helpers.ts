@@ -16,7 +16,16 @@ export function formatCategoryList(c: CategoryData[]) {
       title,
       subTitle,
       icon,
-      imageUrl: `${process.env.NEXT_APP_IMAGE_URL}${image?.data.attributes.url}`,
+      imageUrl: appendImageUrl(image!.data.attributes.url),
     };
   });
+}
+
+export function decodeURL(url: string) {
+  const decodedUrl = decodeURIComponent(url);
+  return decodedUrl[0].toUpperCase() + decodedUrl.substring(1);
+}
+
+export function appendImageUrl(url: string) {
+  return `${process.env.BACKEND_BASE_URL}${url}`;
 }

@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import {
   ProductSummary,
   ProductMedia,
@@ -5,25 +6,48 @@ import {
   Specifications,
   SupprtedOSContainer,
 } from "@/components/sections/product-detail";
+import { getProductDetail } from "@/services/products.service";
+import { appendImageUrl } from "@/lib/helpers";
 
 type ProductDetailParamsType = {
   categorySlug: string;
   productSlug: string;
 };
 
-export default function ProductDetail({ params }: { params: ProductDetailParamsType }) {
+export default async function ProductDetail({ params }: { params: ProductDetailParamsType }) {
   const { productSlug } = params;
-  const images = new Array(5).fill("/images/placeholder.png");
+  const products = await getProductDetail(productSlug);
+
+  if (!products) return redirect("/");
+
+  const {
+    name,
+    description,
+    banner,
+    images,
+    tagline,
+    specification,
+    file,
+    video,
+    supportedOperatingSystem: os,
+  } = products;
+
+  const mediaUrls = images!.data.map((image) => appendImageUrl(image.attributes.url));
 
   return (
     <>
       <main className="flex flex-col pt-6 pb-16 gap-12">
-        <ProductSummary productSlug={productSlug} />
-        <ProductMedia images={images} />
-        <ProductVideoContainer videoUrl="https://www.youtube.com/embed/4E3ke9lB1Iw?si=lvI0fuLq3OloTvbv" />
+        <ProductSummary
+          name={name}
+          description={description}
+          imageUrl={appendImageUrl(banner!.data.attributes.url)}
+          fileUrl={appendImageUrl(file!.data.attributes.url)}
+        />
+        <ProductMedia images={mediaUrls} tagline={tagline!} />
+        <ProductVideoContainer videoUrl={video!} />
       </main>
-      <Specifications />
-      <SupprtedOSContainer />
+      <Specifications spec={specification!.data} />
+      <SupprtedOSContainer os={os!} />
     </>
   );
 }

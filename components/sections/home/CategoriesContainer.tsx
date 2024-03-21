@@ -30,7 +30,7 @@ export default async function CategoriesContainer() {
               title={category.title}
               description={category.subTitle}
               icon={category.icon}
-              iconSize={IconSize.SM}
+              iconsize={IconSize.SM}
               imageUrl={category.imageUrl}
               className="category-card"
               titleClassName="text-h4 max-md:text-h5"

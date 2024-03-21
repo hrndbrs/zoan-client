@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-// import { categories } from "@/lib/mockData";
 import { CustomCard, IconSize } from "@/components/shared";
 import { getProductCategories } from "@/services/categories.service";
 import { formatCategoryList } from "@/lib/helpers";
@@ -19,7 +18,7 @@ export default async function CategoriesContainer() {
               title={title}
               icon={icon!}
               description={subTitle}
-              iconSize={IconSize.MD}
+              iconsize={IconSize.MD}
               className="shadow-none rounded-none [&:not(:first-child)]:max-md:pt-8"
               contentClassName="h-full p-0 gap-4"
               innerContentClassName="flex-1 justify-between"

@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { decodeURL } from "@/lib/helpers";
 
 export default function BreadCrumb() {
   const routes = usePathname().substring(1).split("/");
@@ -12,7 +13,7 @@ export default function BreadCrumb() {
         const isCurrentRoute = route === routes.at(-1);
         return (
           <span key={route} className={cn("text-body-12", isCurrentRoute ? "underline" : "")}>
-            {decodeURIComponent(route) + (!isCurrentRoute ? " /" : "")}&nbsp;
+            {decodeURL(route)} {!isCurrentRoute ? <>/&nbsp;</> : ""}
           </span>
         );
       })}

@@ -1,7 +1,7 @@
 import { MdLocalPhone, MdLocationPin } from "react-icons/md";
 import { RiFacebookCircleFill, RiInstagramFill } from "react-icons/ri";
 import Link from "next/link";
-import { companyProfile } from "@/lib/mockData";
+import { companyProfile } from "@/assets/static";
 
 export default function LabelTop() {
   return (

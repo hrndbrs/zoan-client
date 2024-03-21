@@ -21,9 +21,9 @@ export default function NavLinksContainer({
         </NavLink>
       ))}
       {showButton ? (
-        <li className="flex items-center md:hidden">
+        <NavLink liClassName="md:hidden" path="/contact-us">
           <Button>Contact Us</Button>
-        </li>
+        </NavLink>
       ) : (
         <NavLink {...navLinkProps} path="/contact-us">
           Contact

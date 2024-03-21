@@ -1,7 +1,7 @@
 "use client";
 
 import { CustomForm, SectionHeader, BreadCrumb } from "@/components/shared";
-import { contactFormSchema, ContactFormSchemaType } from "@/lib/zod/schema";
+import { contactFormSchema } from "@/lib/zod/schema";
 import { InputFieldProps } from "@/components/shared/form/CustomForm";
 import { cities } from "@/assets/static";
 import { handleSubmitContactForm } from "@/services/contact.service";
@@ -20,10 +20,6 @@ export default function ContactForm() {
     { name: "message", inputType: "textarea" },
   ];
 
-  // function handleSubmit(values: ContactFormSchemaType) {
-  //   console.log(values);
-  // }
-
   return (
     <div>
       <SectionHeader
@@ -35,7 +31,6 @@ export default function ContactForm() {
       <CustomForm
         schema={contactFormSchema}
         inputFields={inputFields}
-        // onSubmit={handleSubmit}
         onSubmit={handleSubmitContactForm}
         buttonClassName="self-start"
       >

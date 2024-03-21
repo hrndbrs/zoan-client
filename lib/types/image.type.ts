@@ -1,17 +1,17 @@
 export type Images = {
-  data: Datum[];
+  data: ImageData[];
 };
 
 export type Image = {
-  data: Datum;
+  data: ImageData;
 };
 
-export type Datum = {
+export type ImageData = {
   id: number;
-  attributes: DatumAttributes;
+  attributes: ImageDataAttributes;
 };
 
-export type DatumAttributes = {
+export type ImageDataAttributes = {
   name: string;
   alternativeText: null;
   caption: null;

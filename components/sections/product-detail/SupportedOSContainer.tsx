@@ -1,7 +1,12 @@
 import Image from "next/image";
 import { SplitContentWrapper } from "@/components/shared";
+import { SupportedOS } from "@/lib/types/products.type";
 
-export default function SupportedOSContainer() {
+type SupportedOSContainerPropType = {
+  os: SupportedOS[];
+};
+
+export default function SupportedOSContainer({ os }: SupportedOSContainerPropType) {
   return (
     <section className="py-16 px-5">
       <SplitContentWrapper
@@ -11,16 +16,16 @@ export default function SupportedOSContainer() {
               Supported Operating System
             </h4>
             <div>
-              <p className="font-bold mb-3">Windows</p>
-              <p>Windows® Server 2019</p>
-              <p>Windows® Server 2016</p>
-              <p>Windows 10</p>
-            </div>
-            <div>
-              <p className="font-bold mb-3">Linux</p>
-              <p>RedHat® Enterprise Linux 7.5</p>
-              <p>SuSE® Enterprise Linux 12 SP3</p>
-              <p>CentOS 7.4</p>
+              {os.map((supportedOs) => {
+                return (
+                  <>
+                    <p className="font-bold mb-3">{supportedOs.name}</p>
+                    {supportedOs.type.map((osType) => (
+                      <p key={osType.id}>{osType.type}</p>
+                    ))}
+                  </>
+                );
+              })}
             </div>
           </div>
         }

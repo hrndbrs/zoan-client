@@ -7,3 +7,4 @@ export { default as SplitContentWrapper } from "./SplitContentWrapper";
 export { default as CustomForm, type CustomFormPropType } from "./form/CustomForm";
 export { default as BreadCrumb } from "./BreadCrumb";
 export { default as BlogViewer } from "./BlogViewer";
+export { default as NotFound } from "./NotFound";

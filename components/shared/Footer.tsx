@@ -2,7 +2,7 @@ import Link from "next/link";
 import { RiFacebookCircleFill, RiInstagramLine, RiLinkedinBoxFill } from "react-icons/ri";
 import LogoContainer from "./LogoContainer";
 import NavLinksContainer from "./navigation/NavLinksContainer";
-import { companyProfile } from "@/lib/mockData";
+import { companyProfile } from "@/assets/static";
 
 export default function Footer() {
   return (

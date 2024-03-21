@@ -1,4 +1,5 @@
 import { Image } from "./image.type";
+import { Products } from "./products.type";
 
 export type Categories = {
   data: CategoryData[];
@@ -18,30 +19,12 @@ export type CategoryData = {
 export type CategoryDataAttributes = {
   title: string;
   subTitle: string;
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
   products: Products;
   icon?: string;
   image?: Image;
-};
-
-export type Products = {
-  data: ProductData[];
-};
-
-export type ProductData = {
-  id: number;
-  attributes: ProductDataAttributes;
-};
-
-export type ProductDataAttributes = {
-  name: string;
-  type: string;
-  video: string;
-  updatedAt: Date;
-  publishedAt: Date;
-  products: Products;
 };
 
 export type Meta = {};

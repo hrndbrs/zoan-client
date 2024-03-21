@@ -1,19 +1,25 @@
-import { blogs } from "@/lib/mockData";
 import { BlogDetailContainer } from "@/components/sections/blog-detail";
-import { BlogViewer } from "@/components/shared";
+import { BlogViewer, NotFound } from "@/components/shared";
+import { getBlogDetail } from "@/services/blogs.service";
 
 type RouteParamsType = {
   slug: string;
 };
 
-export default function BlogDetail({ params }: { params: RouteParamsType }) {
+export default async function BlogDetail({ params }: { params: RouteParamsType }) {
   const { slug } = params;
-  const blog = blogs.find((blog) => blog.slug === slug);
-  if (!blog) return <div>Blog is unavailable</div>;
+  const blog = await getBlogDetail(slug);
+
   return (
     <>
-      <BlogDetailContainer blog={blog} />
-      <BlogViewer header="Another" blogs={blogs} />
+      {blog ? (
+        <BlogDetailContainer blog={blog} />
+      ) : (
+        <NotFound>
+          <p>Blog is unavailable</p>
+        </NotFound>
+      )}
+      <BlogViewer header="Another" />
     </>
   );
 }

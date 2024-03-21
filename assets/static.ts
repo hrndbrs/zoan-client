@@ -1,3 +1,11 @@
+export const companyProfile = {
+  phoneNumber: "+62 817 8888 22",
+  address: "Wisma 77, Tower 1 - 15th floor, Jl Letjen S Parman Kav 77",
+  facebook: "https://facebook.com",
+  instagram: "https://instagram.com",
+  linkedin: "https://linkedin.com",
+} as const;
+
 export const routes = [
   {
     name: "Home",
@@ -25,7 +33,7 @@ export const banners = [
   "/images/banners/jumbotron-1.png",
   "/images/banners/jumbotron-2.png",
   "/images/banners/jumbotron-3.png",
-] as const;
+];
 
 export const cities = [
   "Kota Banda Aceh",

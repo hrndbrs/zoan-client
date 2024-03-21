@@ -20,7 +20,7 @@ type CustomCardProps = CustomCardBaseProps &
   (
     | {
         icon: string;
-        iconSize?: IconSize;
+        iconsize?: IconSize;
         iconClassName?: string;
       }
     | { icon?: undefined }
@@ -47,7 +47,7 @@ export default function CustomCard({
   ...props
 }: CustomCardProps) {
   return (
-    <Card className={className} {...props}>
+    <Card className={className}>
       {props.imageUrl ? (
         <div
           className={cn("w-full relative aspect-[600/396] overflow-hidden", props.imageClassName)}
@@ -62,7 +62,7 @@ export default function CustomCard({
           <div
             className={cn(
               "relative w-full flex",
-              props.iconSize ? props.iconSize : IconSize.SM,
+              props.iconsize ? props.iconsize : IconSize.SM,
               props.iconClassName,
             )}
           >
