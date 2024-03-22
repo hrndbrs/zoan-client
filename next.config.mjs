@@ -6,6 +6,10 @@ const nextConfig = {
         source: "/api",
         destination: `${process.env.NEXT_APP_BASE_URL}/:path*`,
       },
+      {
+        source: "/:path*",
+        destination: `${process.env.NEXT_APP_IMAGE_URL}/:path*`,
+      },
     ];
   },
   env: {
