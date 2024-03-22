@@ -32,7 +32,12 @@ export default async function ProductDetail({ params }: { params: ProductDetailP
     supportedOperatingSystem: os,
   } = products;
 
-  const mediaUrls = images!.data.map((image) => appendImageUrl(image.attributes.url));
+  let mediaUrls: string[] = [];
+
+  if (images?.data) {
+    mediaUrls.push(...images.data.map((image) => appendImageUrl(image.attributes.url)));
+  }
+  // const mediaUrls = images!.data.map((image) => appendImageUrl(image.attributes.url));
 
   return (
     <>
@@ -41,13 +46,13 @@ export default async function ProductDetail({ params }: { params: ProductDetailP
           name={name}
           description={description}
           imageUrl={appendImageUrl(banner!.data.attributes.url)}
-          fileUrl={appendImageUrl(file!.data.attributes.url)}
+          fileUrl={appendImageUrl(file?.data?.attributes?.url)}
         />
-        <ProductMedia images={mediaUrls} tagline={tagline!} />
-        <ProductVideoContainer videoUrl={video!} />
+        <ProductMedia images={mediaUrls} tagline={tagline} />
+        <ProductVideoContainer videoUrl={video} />
       </main>
       <Specifications spec={specification!.data} />
-      <SupprtedOSContainer os={os!} />
+      {os!.length > 0 ? <SupprtedOSContainer os={os!} /> : undefined}
     </>
   );
 }

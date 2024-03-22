@@ -4,9 +4,9 @@ import { SplitContentWrapper } from "@/components/shared";
 
 type ProductSummaryPropType = {
   name: string;
-  description: string;
+  description?: string;
   imageUrl: string;
-  fileUrl: string;
+  fileUrl?: string;
 };
 
 export default function ProductSummary({
@@ -20,12 +20,12 @@ export default function ProductSummary({
       <SplitContentWrapper
         className="gap-5"
         left={
-          <div className="relative w-full max-md:aspect-[64/45]">
+          <div className="relative w-full aspect-[11/8] object-contain max-md:object-cover max-md:aspect-[64/45]">
             <Image
               src={imageUrl || "/images/placeholder.png"}
               alt="product"
               fill
-              style={{ objectFit: "cover" }}
+              // style={{ objectFit: "cover" }}
             />
           </div>
         }
@@ -37,11 +37,13 @@ export default function ProductSummary({
             <div className="flex flex-col gap-8 pt-4">
               <div
                 className="whitespace-pre-line"
-                dangerouslySetInnerHTML={{ __html: description }}
+                dangerouslySetInnerHTML={{ __html: description || "NO DESCRIPTION AVAILABLE" }}
               />
-              <a href={fileUrl} className="self-start">
-                <Button>Download Data Sheet</Button>
-              </a>
+              {fileUrl ? (
+                <a href={fileUrl} className="self-start">
+                  <Button>Download Data Sheet</Button>
+                </a>
+              ) : undefined}
             </div>
           </div>
         }

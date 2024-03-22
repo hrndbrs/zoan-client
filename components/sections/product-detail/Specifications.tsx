@@ -12,19 +12,23 @@ export default function Specifications({ spec }: SpecificationsPropType) {
           Specifications
         </h4>
         <div className="w-full flex flex-col gap-8">
-          {spec.map((attr) => {
-            const values = attr.value.split(";");
-            return (
-              <div key={attr.id} className="flex max-md:flex-col gap-8">
-                <p className="md:flex-[1] font-bold">{attr.key}</p>
-                <ul className="indented-bullet-list md:flex-[4]">
-                  {values.map((val, idx) => (
-                    <li key={idx}>{val}</li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+          {spec ? (
+            spec.map((attr) => {
+              const values = attr.value.split(";");
+              return (
+                <div key={attr.id} className="flex max-md:flex-col gap-8">
+                  <p className="md:flex-[1] font-bold">{attr.key}</p>
+                  <ul className="indented-bullet-list md:flex-[4]">
+                    {values.map((val, idx) => (
+                      <li key={idx}>{val}</li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })
+          ) : (
+            <p className="text-center p-1">N/A</p>
+          )}
         </div>
       </div>
     </section>
