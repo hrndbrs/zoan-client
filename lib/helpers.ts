@@ -27,6 +27,5 @@ export function decodeURL(url: string) {
 }
 
 export function appendImageUrl(url?: string) {
-  if (!url) return null;
   return `${process.env.BACKEND_BASE_URL}${url}`;
 }

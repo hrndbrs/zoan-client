@@ -34,7 +34,9 @@ export default async function CategoryProducts({ params }: { params: RouteParams
               <CustomCard
                 key={product.name}
                 imageUrl={
-                  appendImageUrl(product.banner?.data.attributes.url) || "/images/placeholder.png"
+                  product.banner
+                    ? appendImageUrl(product.banner.data.attributes.url)
+                    : "/images/placeholder.png"
                 }
                 title={product.name}
                 description={product.type}
