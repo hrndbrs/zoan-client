@@ -12,8 +12,11 @@ export default function BreadCrumb() {
       {routes.map((route) => {
         const isCurrentRoute = route === routes.at(-1);
         return (
-          <span key={route} className={cn("text-body-12", isCurrentRoute ? "underline" : "")}>
-            {decodeURL(route)} {!isCurrentRoute ? <>/&nbsp;</> : ""}
+          <span
+            key={route}
+            className={cn("text-body-12", isCurrentRoute ? "underline" : undefined)}
+          >
+            {decodeURL(route)} {!isCurrentRoute ? <>/&nbsp;</> : undefined}
           </span>
         );
       })}

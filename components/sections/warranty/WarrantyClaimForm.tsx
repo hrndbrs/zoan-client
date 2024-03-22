@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { warrantyClaimFormSchema, WarrantyClaimFormSchemaType } from "@/lib/zod/schema";
+import { warrantyClaimFormSchema } from "@/lib/zod/schema";
 import { InputFieldProps } from "@/components/shared/form/CustomForm";
 import { CustomForm, SectionHeader } from "@/components/shared";
 import { getProductCategories } from "@/services/categories.service";
 import { SelectOption } from "@/lib/types/select-option.type";
+import { handleSubmitWarrantyForm } from "@/services/warranty.service";
 
 export default function WarrantyClaimForm() {
   const [categories, setCategories] = useState<SelectOption[]>([]);
@@ -16,8 +17,7 @@ export default function WarrantyClaimForm() {
     { name: "phone" },
     { name: "serialNumber" },
     {
-      name: "categorySlug",
-      label: "Product Category",
+      name: "productCategory",
       inputType: "select",
       placeholder: "Select one...",
       options: categories,
@@ -26,20 +26,23 @@ export default function WarrantyClaimForm() {
     { name: "address", inputType: "textarea" },
   ];
 
-  function handleSubmit(values: WarrantyClaimFormSchemaType) {
-    console.log(values);
-  }
-
   useEffect(() => {
-    getProductCategories().then((data) => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    getProductCategories(signal).then((data) => {
       if (data)
         setCategories(
-          data.map((category) => ({
-            value: category.id,
-            label: category.attributes.title,
-          })),
+          data.map((category) => {
+            const { title } = category.attributes;
+            return {
+              value: title,
+              label: title,
+            };
+          }),
         );
     });
+
+    return () => controller.abort();
   }, []);
 
   return (
@@ -54,7 +57,7 @@ export default function WarrantyClaimForm() {
         <CustomForm
           schema={warrantyClaimFormSchema}
           inputFields={inputFields}
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmitWarrantyForm}
           buttonClassName="self-center max-md:self-start"
         />
       </div>

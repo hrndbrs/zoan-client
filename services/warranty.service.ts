@@ -5,9 +5,8 @@ import { WarrantyClaimFormSchemaType } from "@/lib/zod/schema";
 
 export async function handleSubmitWarrantyForm(values: WarrantyClaimFormSchemaType) {
   try {
-    const { data } = await api.post("/service-center", {
+    await api.post("/warranties", {
       data: values,
     });
-    console.log(data);
   } catch (error) {}
 }

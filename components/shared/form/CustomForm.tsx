@@ -32,7 +32,6 @@ export type CustomFormPropType = {
   inputFields: InputFieldProps[];
   schema: z.ZodObject<any>;
   onSubmit(values: { [k: string]: any }): void;
-  defaultValues?: z.infer<z.ZodObject<any>>;
   buttonClassName?: string;
   children?: React.ReactNode;
 };
@@ -40,11 +39,11 @@ export type CustomFormPropType = {
 export default function CustomForm({
   inputFields,
   schema,
-  defaultValues,
   onSubmit,
   buttonClassName,
   children,
 }: CustomFormPropType) {
+  const defaultValues = Object.fromEntries(inputFields.map((field) => [field.name, ""]));
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues,
@@ -52,7 +51,13 @@ export default function CustomForm({
 
   return (
     <Form {...form}>
-      <form className="w-full flex flex-col gap-6" action={onSubmit}>
+      <form
+        className="w-full flex flex-col gap-6"
+        onSubmit={form.handleSubmit((formData) => {
+          onSubmit(formData);
+          form.reset(defaultValues);
+        })}
+      >
         {inputFields.map((inputField) => {
           const { name, label, placeholder } = inputField;
           const inputlabel = label || camelCaseToWords(name);

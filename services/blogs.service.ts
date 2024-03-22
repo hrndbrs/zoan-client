@@ -9,16 +9,16 @@ export async function getBlogList(page?: number) {
 
   try {
     const { data } = await api.get<Blogs>(endpoint);
-    console.log(data, "======================delete later==============");
 
-    return data.data;
+    return { blogs: data.data, pagination: data.meta.pagination };
   } catch (error) {}
 }
 
-export async function getLatestBlogs() {
+export async function getLatestBlogs(signal?: AbortSignal) {
   try {
     const { data } = await api.get<Blogs>(
       "/blogs?populate=*&sort[0]=publishedAt:desc&pagination[pageSize]=5",
+      { signal },
     );
 
     return data.data;

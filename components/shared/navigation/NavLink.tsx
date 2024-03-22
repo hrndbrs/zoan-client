@@ -24,7 +24,7 @@ export default function NavLink({
     <li className={cn("flex items-center", liClassName)} {...props}>
       <Link
         href={path}
-        className={cn("w-full max-md:pb-8", className, isActive ? "after:w-full" : "")}
+        className={cn("w-full max-md:pb-8", className, isActive ? "after:w-full" : undefined)}
       >
         {children}
       </Link>

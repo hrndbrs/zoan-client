@@ -18,7 +18,7 @@ export const warrantyClaimFormSchema = z
     email: z.string().email("Invalid email address"),
     phone: z.string(),
     serialNumber: z.string(),
-    categorySlug: z.string(),
+    productCategory: z.string(),
     purchaseDate: z.date().max(new Date()),
     address: z.string(),
   })

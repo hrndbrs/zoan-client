@@ -17,10 +17,10 @@ export default function SectionHeader({
 }: SectionHeaderPropType) {
   return (
     <div className={cn("flex flex-col mb-12 gap-4", className)} {...props}>
-      <p className={cn(emphasizeSub ? "uppercase font-bold" : "")}>{subtitle}</p>
+      <p className={cn(emphasizeSub ? "uppercase font-bold" : undefined)}>{subtitle}</p>
       <div className={cn("flex flex-col gap-6", className)}>
         <h3 className="text-h3 uppercase font-bold max-md:text-h4">{title}</h3>
-        {description ? <p>{description}</p> : ""}
+        {description ? <p>{description}</p> : undefined}
       </div>
     </div>
   );

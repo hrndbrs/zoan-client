@@ -13,18 +13,13 @@ const buttonVariants = cva(
         "default-2":
           "bg-natural-1 text-natural-9 hover:bg-natural-9 hover:text-natural-1 font-bold border-natural-9 border-[1px] uppercase",
         transparent: "bg-transparent",
-        // default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        // destructive:
-        // 	"bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        // secondary:
-        // 	"bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        // ghost: "hover:bg-accent hover:text-accent-foreground",
-        // link: "text-primary underline-offset-4 hover:underline",
+        "pagination-active": "bg-z-teal !text-body-12 text-natural-1",
+        "pagination-inactive": "bg-transparent !text-body-12 text-natural-5 hover:text-natural-9",
       },
       size: {
         default: "h-10 px-4 py-2",
-        sm: "h-9 px-3",
+        sm: "h-9 px-1",
         lg: "h-11 px-8",
         icon: "h-10 w-10",
       },

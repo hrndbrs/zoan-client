@@ -8,3 +8,4 @@ export { default as CustomForm, type CustomFormPropType } from "./form/CustomFor
 export { default as BreadCrumb } from "./BreadCrumb";
 export { default as BlogViewer } from "./BlogViewer";
 export { default as NotFound } from "./NotFound";
+export { default as CustPagination } from "./CustPagination";

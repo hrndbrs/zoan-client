@@ -2,10 +2,12 @@ import { Image } from "./image.type";
 
 export type Blogs = {
   data: BlogData[];
+  meta: Meta;
 };
 
 export type Blog = {
   data: BlogData;
+  meta: Meta;
 };
 
 export type BlogData = {
@@ -21,4 +23,15 @@ export type BlogDataAttributes = {
   publishedAt: string;
   author?: string;
   banner: Image;
+};
+
+export type Meta = {
+  pagination: Pagination;
+};
+
+export type Pagination = {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
 };

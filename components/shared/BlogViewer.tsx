@@ -22,16 +22,22 @@ export default function BlogViewer({ header, showScrollButton = true }: BlogView
   const { scrollAreaRef, scrollLeft, scrollRight } = useOnClickScroll();
 
   useEffect(() => {
-    getLatestBlogs().then((data) => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    getLatestBlogs(signal).then((data) => {
       if (data) setBlogs(data);
     });
+
+    return () => controller.abort();
   }, []);
 
   return (
     <section className="px-5 py-16 bg-natural-1">
       {header || showScrollButton ? (
         <div className="flex justify-between items-center mx-auto max-w-[75rem] mb-8">
-          {header ? <h4 className="uppercase font-bold text-h4 max-md:text-h5">{header}</h4> : ""}
+          {header ? (
+            <h4 className="uppercase font-bold text-h4 max-md:text-h5">{header}</h4>
+          ) : undefined}
           {showScrollButton ? (
             <div>
               <Button onClick={scrollLeft} variant="transparent">
@@ -53,9 +59,7 @@ export default function BlogViewer({ header, showScrollButton = true }: BlogView
                 />
               </Button>
             </div>
-          ) : (
-            ""
-          )}
+          ) : undefined}
         </div>
       ) : (
         ""
