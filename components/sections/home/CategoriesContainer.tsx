@@ -9,6 +9,8 @@ export default async function CategoriesContainer() {
   if (res) {
     const categories = formatCategoryList(res);
 
+    console.log(process.env, "=======================");
+
     return (
       <section id="categories" className="px-5 py-[7.5rem] xl:h-[110rem] md:h-[144rem]">
         <div className="inner-container flex-col !justify-start flex-wrap h-full gap-8">
