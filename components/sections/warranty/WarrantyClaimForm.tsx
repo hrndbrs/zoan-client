@@ -27,9 +27,7 @@ export default function WarrantyClaimForm() {
   ];
 
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    getProductCategories(signal).then((data) => {
+    getProductCategories().then((data) => {
       if (data)
         setCategories(
           data.map((category) => {
@@ -41,8 +39,6 @@ export default function WarrantyClaimForm() {
           }),
         );
     });
-
-    return () => controller.abort();
   }, []);
 
   return (

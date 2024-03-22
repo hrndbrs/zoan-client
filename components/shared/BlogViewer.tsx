@@ -22,13 +22,9 @@ export default function BlogViewer({ header, showScrollButton = true }: BlogView
   const { scrollAreaRef, scrollLeft, scrollRight } = useOnClickScroll();
 
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    getLatestBlogs(signal).then((data) => {
+    getLatestBlogs().then((data) => {
       if (data) setBlogs(data);
     });
-
-    return () => controller.abort();
   }, []);
 
   return (
