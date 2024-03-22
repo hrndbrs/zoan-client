@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import useOnClickScroll from "@/hooks/useOnClickScroll";
 import { appendImageUrl, formatDate } from "@/lib/helpers";
 import { BlogData } from "@/lib/types/blogs.type";
-import { getLatestBlogs } from "@/services/blogs.service";
+import { getLatestBlogs } from "@/services/blogs-viewer.service";
 
 type BlogViewerPropType = {
   header?: string;

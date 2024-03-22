@@ -14,17 +14,6 @@ export async function getBlogList(page?: number) {
   } catch (error) {}
 }
 
-export async function getLatestBlogs(signal?: AbortSignal) {
-  try {
-    const { data } = await api.get<Blogs>(
-      "/blogs?populate=*&sort[0]=publishedAt:desc&pagination[pageSize]=5",
-      { signal },
-    );
-
-    return data.data;
-  } catch (error) {}
-}
-
 export async function getBlogDetail(slug: string) {
   try {
     const { data } = await api.get<Blogs>(`/blogs?populate=*&filters[title][$eq]=${slug}`);

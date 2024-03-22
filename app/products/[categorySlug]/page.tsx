@@ -2,7 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { CustomCard, NotFound } from "@/components/shared";
 import { Button } from "@/components/ui/button";
-import { getProductsByCategory } from "@/services/categories.service";
+import { getProductsByCategory } from "@/services/products.service";
+import { appendImageUrl } from "@/lib/helpers";
 
 type RouteParamsType = {
   categorySlug: string;
@@ -32,7 +33,9 @@ export default async function CategoryProducts({ params }: { params: RouteParams
             {products.data.map(({ attributes: product }) => (
               <CustomCard
                 key={product.name}
-                imageUrl="/images/placeholder.png"
+                imageUrl={
+                  appendImageUrl(product.banner?.data.attributes.url) || "/images/placeholder.png"
+                }
                 title={product.name}
                 description={product.type}
                 className="max-sm:px-5"

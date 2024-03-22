@@ -6,7 +6,6 @@ const api = axios.create({
   headers: {
     "Content-type": "application/json",
     Accept: "application/json",
-    // Authorization: `Bearer ${process.env.NEXT_APP_API_TOKEN}`,
   },
 });
 
