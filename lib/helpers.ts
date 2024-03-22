@@ -16,7 +16,7 @@ export function formatCategoryList(c: CategoryData[]) {
       title,
       subTitle,
       icon,
-      imageUrl: image ? appendImageUrl(image.data.attributes.url) : "/images/placeholder.png",
+      imageUrl: image?.data ? appendImageUrl(image.data.attributes.url) : "/images/placeholder.png",
     };
   });
 }
