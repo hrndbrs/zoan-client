@@ -21,12 +21,7 @@ export default function ProductSummary({
         className="gap-5"
         left={
           <div className="relative w-full aspect-[11/8] object-contain max-md:object-cover max-md:aspect-[64/45]">
-            <Image
-              src={imageUrl || "/images/placeholder.png"}
-              alt="product"
-              fill
-              // style={{ objectFit: "cover" }}
-            />
+            <Image src={imageUrl || "/images/placeholder.png"} alt="product" fill />
           </div>
         }
         right={
@@ -43,7 +38,9 @@ export default function ProductSummary({
                 <a href={fileUrl} className="self-start">
                   <Button>Download Data Sheet</Button>
                 </a>
-              ) : undefined}
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         }

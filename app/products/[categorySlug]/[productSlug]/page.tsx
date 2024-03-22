@@ -37,7 +37,6 @@ export default async function ProductDetail({ params }: { params: ProductDetailP
   if (images?.data) {
     mediaUrls.push(...images.data.map((image) => appendImageUrl(image.attributes.url)));
   }
-  // const mediaUrls = images!.data.map((image) => appendImageUrl(image.attributes.url));
 
   return (
     <>
@@ -46,7 +45,7 @@ export default async function ProductDetail({ params }: { params: ProductDetailP
           name={name}
           description={description}
           imageUrl={appendImageUrl(banner!.data.attributes.url)}
-          fileUrl={appendImageUrl(file?.data?.attributes?.url)}
+          fileUrl={file?.data ? appendImageUrl(file?.data?.attributes?.url) : undefined}
         />
         <ProductMedia images={mediaUrls} tagline={tagline} />
         <ProductVideoContainer videoUrl={video} />
