@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import BlogsListDisplay from "@/components/sections/read/BlogListDisplay";
+import { NotFound } from "@/components/shared";
 import { getBlogList } from "@/services/blogs.service";
 
 type SearchParamsType = {
@@ -11,7 +12,8 @@ export default async function BlogsAndNews({ searchParams }: { searchParams: Sea
   if (+page <= 0) return redirect("/read");
 
   const res = await getBlogList(+page);
-  if (!res) return redirect("/");
+
+  if (!res) return <NotFound>Unable to load data</NotFound>;
 
   const { blogs, pagination } = res;
 

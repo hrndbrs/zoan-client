@@ -1,7 +1,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { useToast } from "@/components/ui/use-toast";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -31,7 +39,7 @@ export type InputFieldProps = InputFieldBaseProps &
 export type CustomFormPropType = {
   inputFields: InputFieldProps[];
   schema: z.ZodObject<any>;
-  onSubmit(values: { [k: string]: any }): void;
+  onSubmit(values: { [k: string]: any }): Promise<void>;
   buttonClassName?: string;
   children?: React.ReactNode;
 };
@@ -43,6 +51,7 @@ export default function CustomForm({
   buttonClassName,
   children,
 }: CustomFormPropType) {
+  const { toast } = useToast();
   const defaultValues = Object.fromEntries(inputFields.map((field) => [field.name, ""]));
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
@@ -53,9 +62,10 @@ export default function CustomForm({
     <Form {...form}>
       <form
         className="w-full flex flex-col gap-6"
-        onSubmit={form.handleSubmit((formData) => {
-          onSubmit(formData);
+        onSubmit={form.handleSubmit(async (formData) => {
+          await onSubmit(formData);
           form.reset(defaultValues);
+          toast({ description: "Form has been submitted successfully" });
         })}
       >
         {inputFields.map((inputField) => {
@@ -108,6 +118,7 @@ export default function CustomForm({
                         <Input className="rounded-none border-natural-9" {...field} />
                       </FormControl>
                     )}
+                    <FormMessage />
                   </FormItem>
                 );
               }}

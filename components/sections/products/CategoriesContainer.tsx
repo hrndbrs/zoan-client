@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { CustomCard, IconSize } from "@/components/shared";
+import { CustomCard, IconSize, NotFound } from "@/components/shared";
 import { getProductCategories } from "@/services/categories.service";
 import { formatCategoryList } from "@/lib/helpers";
 
@@ -34,6 +34,11 @@ export default async function CategoriesContainer() {
       </div>
     );
   } else {
-    return <div>Something went wrong</div>;
+    return (
+      <NotFound>
+        <p>Something went wrong</p>
+        <p>Refresh to try again</p>
+      </NotFound>
+    );
   }
 }
