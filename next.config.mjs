@@ -1,5 +1,54 @@
 /** @type {import('next').NextConfig} */
+const securityHeaders = [
+  {
+    key: "X-XSS-Protection",
+    value: "1; mode=block",
+  },
+  {
+    key: "X-Content-Type-Options",
+    value: "nosniff",
+  },
+  {
+    key: "Referrer-Policy",
+    value: "origin-when-cross-origin",
+  },
+  {
+    key: "X-DNS-Prefetch-Control",
+    value: "on",
+  },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=21600000; includeSubDomains; preload",
+  },
+];
+
 const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: securityHeaders,
+      },
+      {
+        source: "/:all*(js|css|min.css|min.js)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=21600000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/:all*(svg|jpg|png|webp)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=21600000, immutable",
+          },
+        ],
+      },
+    ];
+  },
   async rewrites() {
     return [
       {
@@ -28,6 +77,7 @@ const nextConfig = {
       },
     ],
   },
+  swcMinify: true,
 };
 
 export default nextConfig;
