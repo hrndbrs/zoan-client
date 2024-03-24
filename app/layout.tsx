@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
 import { Header, Footer } from "@/components/shared";
 import { Toaster } from "@/components/ui/toaster";
+
 import "./globals.css";
 
 const barlow = Barlow({

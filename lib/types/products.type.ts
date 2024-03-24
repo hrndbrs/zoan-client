@@ -1,4 +1,5 @@
 import { Image, Images } from "./image.type";
+import { Metadata } from "./metadata.type";
 
 export type Products = {
   data: ProductData[];
@@ -27,6 +28,7 @@ export type ProductDataAttributes = {
   specification?: Specification;
   tagline?: TagLine;
   file?: FileType;
+  seo: Metadata;
 };
 
 type FileType = {

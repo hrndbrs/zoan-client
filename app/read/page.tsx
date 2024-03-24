@@ -2,10 +2,16 @@ import { redirect } from "next/navigation";
 import BlogsListDisplay from "@/components/sections/read/BlogListDisplay";
 import { NotFound } from "@/components/shared";
 import { getBlogList } from "@/services/blogs.service";
+import { Metadata } from "next";
+import { generateSeo } from "@/lib/helpers";
 
 type SearchParamsType = {
   page: string;
 };
+
+export async function generateMetadata(): Promise<Metadata> {  
+  return generateSeo("News & Blogs");
+}
 
 export default async function BlogsAndNews({ searchParams }: { searchParams: SearchParamsType }) {
   const { page } = searchParams;

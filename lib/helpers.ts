@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { CategoryData } from "./types/categories.type";
 
 export function camelCaseToWords(s: string) {
@@ -28,4 +29,10 @@ export function decodeURL(url: string) {
 
 export function appendImageUrl(url?: string) {
   return `${process.env.BACKEND_BASE_URL}${url}`;
+}
+
+export function generateSeo(value: string): Metadata {
+  return {
+    title: `${value.replace(/%20/g, " ").replace(/%26/g, "&")} - Zoan`,
+  }
 }

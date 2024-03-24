@@ -3,11 +3,17 @@ import { redirect } from "next/navigation";
 import { CustomCard, NotFound } from "@/components/shared";
 import { Button } from "@/components/ui/button";
 import { getProductsByCategory } from "@/services/products.service";
-import { appendImageUrl } from "@/lib/helpers";
+import { appendImageUrl, generateSeo } from "@/lib/helpers";
+import { Metadata } from "next";
 
 type RouteParamsType = {
   categorySlug: string;
 };
+
+export async function generateMetadata({ params }: { params: RouteParamsType }): Promise<Metadata> {  
+  const { categorySlug } = params;
+  return generateSeo(categorySlug);
+}
 
 export default async function CategoryProducts({ params }: { params: RouteParamsType }) {
   const { categorySlug } = params;

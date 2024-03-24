@@ -1,4 +1,5 @@
 import { Image } from "./image.type";
+import { Metadata } from "./metadata.type";
 
 export type Blogs = {
   data: BlogData[];
@@ -23,6 +24,7 @@ export type BlogDataAttributes = {
   publishedAt: string;
   author?: string;
   banner: Image;
+  seo: Metadata;
 };
 
 export type Meta = {

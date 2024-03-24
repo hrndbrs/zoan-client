@@ -1,6 +1,12 @@
 import Image from "next/image";
 import { SplitContentWrapper } from "@/components/shared";
 import ContactForm from "@/components/sections/contact-us/ContactForm";
+import { generateSeo } from "@/lib/helpers";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {  
+  return generateSeo("Contact Us");
+}
 
 export default function ContactUs() {
   return (
