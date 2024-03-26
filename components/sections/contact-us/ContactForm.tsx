@@ -30,12 +30,12 @@ export default function ContactForm() {
 
     a?.click();
 
-    a?.setAttribute("href", "");
+    a?.setAttribute("href", "#");
   }
 
   return (
     <div>
-      <a id="email" href="" className="hidden"></a>
+      <a id="email" href="#" className="hidden"></a>
       <SectionHeader
         title="Get In Touch"
         subtitle={<BreadCrumb />}
