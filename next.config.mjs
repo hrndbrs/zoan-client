@@ -63,7 +63,8 @@ const nextConfig = {
   },
   env: {
     BACKEND_BASE_URL: process.env.NEXT_APP_IMAGE_URL,
-    NEXT_APP_API_URL: process.env.NEXT_APP_API_URL
+    NEXT_APP_API_URL: process.env.NEXT_APP_API_URL,
+    SALES_CONTACT_EMAIL: process.env.SALES_CONTACT_EMAIL
   },
   images: {
     remotePatterns: [

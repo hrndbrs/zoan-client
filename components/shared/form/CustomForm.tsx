@@ -39,9 +39,10 @@ export type InputFieldProps = InputFieldBaseProps &
 export type CustomFormPropType = {
   inputFields: InputFieldProps[];
   schema: z.ZodObject<any>;
-  onSubmit(values: { [k: string]: any }): Promise<void>;
+  onSubmit(values: { [k: string]: any }): void | Promise<void>;
   buttonClassName?: string;
   children?: React.ReactNode;
+  showToast?: boolean;
 };
 
 export default function CustomForm({
@@ -50,6 +51,7 @@ export default function CustomForm({
   onSubmit,
   buttonClassName,
   children,
+  showToast = true,
 }: CustomFormPropType) {
   const { toast } = useToast();
   const defaultValues = Object.fromEntries(inputFields.map((field) => [field.name, ""]));
@@ -65,7 +67,9 @@ export default function CustomForm({
         onSubmit={form.handleSubmit(async (formData) => {
           await onSubmit(formData);
           form.reset(defaultValues);
-          toast({ description: "Form has been submitted successfully" });
+          if (showToast) {
+            toast({ description: "Form has been submitted successfully" });
+          }
         })}
       >
         {inputFields.map((inputField) => {
