@@ -7,11 +7,11 @@ export default function Certifications() {
       <SplitContentWrapper
         left={
           <div className="flex flex-col gap-6">
-            <h3 className="text-5xl font-bold max-md:text-h4">We are TKD and PDN Certified</h3>
+            <h3 className="text-5xl font-bold max-md:text-h4">ZOAN is TKDN and ISO Certified!</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in
-              eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum
-              nulla, ut commodo diam libero vitae erat.
+              Our products are all TKDN + BMP Certified and ISO Certified. ZOAN was certified for
+              ISO 45001:2018 and 14001:2015 by Lembaga Kebijakan Pengadaan Barang / Jasa Pemerintah
+              (LKPP). <br /> #BanggaBuatanIndonesia
             </p>
           </div>
         }
