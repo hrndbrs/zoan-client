@@ -10,52 +10,36 @@ export default async function CategoriesContainer() {
     const categories = formatCategoryList(res);
 
     return (
-      <section id="categories" className="px-5 py-[7.5rem] xl:h-[100rem] md:h-[127rem]">
-        <div className="inner-container flex-col !justify-start flex-wrap h-full gap-8">
-          <CustomCard
-            title="Our products"
-            description="From Servers, IOT Devices, Notebook, Desktop & Workstation to All-in-one PC"
-            className="category-card border-none shadow-none"
-            titleClassName="text-h3 max-md:text-h4"
-          >
+      <section id="categories" className="px-5 py-16 md:py-[7.5rem]">
+        <div className="inner-container flex-col gap-8">
+          <div className="w-full flex flex-col gap-6 py-6">
+            <h3 className="text-h3 max-sm:text-h4 font-bold uppercase">Our Products</h3>
+            <p>From Servers, IOT Devices, Notebook, Desktop & Workstation to All-in-one PC.</p>
             <Link href="/products">
               <Button className="self-start" variant="default-2">
                 Explore
               </Button>
             </Link>
-          </CustomCard>
-          {categories.map((category) => (
-            <CustomCard
-              key={category.title}
-              title={category.title}
-              description={category.subTitle}
-              icon={category.icon}
-              iconsize={IconSize.SM}
-              imageUrl={category.imageUrl}
-              className="category-card"
-              titleClassName="text-h4 max-md:text-h5"
-              contentClassName="items-start"
-              innerContentClassName="!gap-1 max-md:font-bold"
-              descriptionClassName="line-clamp-4"
-            >
-              <Link href={`/products/${category.title}`}>
-                <Button variant="default-2">See More</Button>
-              </Link>
-            </CustomCard>
-          ))}
-          <CustomCard
-            title="For more info"
-            description="Lorem ipsum dolor sit amet, consectur adipiscing elit."
-            className="category-card"
-            titleClassName="text-h4 max-md:text-h5"
-            innerContentClassName="!gap-1"
-          >
-            <Link href="/contact-us">
-              <Button className="self-start" variant="default-1">
-                Contact Us
-              </Button>
-            </Link>
-          </CustomCard>
+          </div>
+          <div className="w-full grid gap-y-8 gap-x-3 sm:grid-cols-2 lg:grid-cols-3">
+            {categories.map((category) => (
+              <CustomCard
+                key={category.title}
+                title={category.title}
+                icon={category.icon}
+                iconsize={IconSize.SM}
+                imageUrl={category.imageUrl}
+                className="category-card"
+                titleClassName="text-h4 max-md:text-h5"
+                contentClassName="flex-1 items-start"
+                innerContentClassName="flex-1 !gap-1 max-md:font-bold"
+              >
+                <Link href={`/products/${category.title}`}>
+                  <Button variant="default-2">See More</Button>
+                </Link>
+              </CustomCard>
+            ))}
+          </div>
         </div>
       </section>
     );

@@ -130,8 +130,12 @@
   /* PRODUCT CATEGORIES */
 
   .category-card {
-    @apply rounded-none border border-natural-9 max-w-sm lg:w-[32%] md:w-[38%] !important;
+    @apply flex flex-col !rounded-none border border-natural-9;
   }
+
+  /* .category-card { */
+  /*   @apply rounded-none border border-natural-9 max-w-sm lg:w-[32%] md:w-[38%] !important; */
+  /* } */
 
   .viewer-card {
     width: clamp(18.75rem, 80vw, 25rem) !important;

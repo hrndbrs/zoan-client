@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface CustomCardBaseProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
-  description: React.ReactNode;
+  description?: React.ReactNode;
   titleClassName?: string;
   descriptionClassName?: string;
   contentClassName?: string;
@@ -54,9 +54,7 @@ export default function CustomCard({
         >
           <Image src={props.imageUrl} fill style={{ objectFit: "cover" }} alt={title} />
         </div>
-      ) : (
-        ""
-      )}
+      ) : undefined}
       <CardContent className={cn("flex flex-col gap-6 p-8", contentClassName)}>
         {props.icon ? (
           <div
@@ -76,14 +74,14 @@ export default function CustomCard({
               alt={title}
             />
           </div>
-        ) : (
-          ""
-        )}
+        ) : undefined}
         <div className={cn("flex flex-col gap-6", innerContentClassName)}>
           <CardTitle className={cn("uppercase font-bold", titleClassName)}>{title}</CardTitle>
-          <CardDescription className={cn("text-body-16", descriptionClassName)}>
-            {description}
-          </CardDescription>
+          {description ? (
+            <CardDescription className={cn("text-body-16", descriptionClassName)}>
+              {description}
+            </CardDescription>
+          ) : undefined}
         </div>
         {children}
       </CardContent>
