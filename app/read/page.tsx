@@ -9,7 +9,7 @@ type SearchParamsType = {
   page: string;
 };
 
-export async function generateMetadata(): Promise<Metadata> {  
+export async function generateMetadata(): Promise<Metadata> {
   return generateSeo("News & Blogs");
 }
 
@@ -23,11 +23,8 @@ export default async function BlogsAndNews({ searchParams }: { searchParams: Sea
 
   const { blogs, pagination } = res;
 
+  if (pagination.pageCount === 0) return <NotFound>There are no blogs to display</NotFound>;
   if (pagination.page > pagination.pageCount) return redirect("/read");
 
-  return (
-    <>
-      <BlogsListDisplay blogs={blogs} pagination={pagination} />;
-    </>
-  );
+  return <BlogsListDisplay blogs={blogs} pagination={pagination} />;
 }

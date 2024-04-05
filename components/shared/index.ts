@@ -9,3 +9,4 @@ export { default as BreadCrumb } from "./BreadCrumb";
 export { default as BlogViewer } from "./BlogViewer";
 export { default as NotFound } from "./NotFound";
 export { default as CustPagination } from "./CustPagination";
+export { default as WhatsAppFloatingButton } from "./WhatsAppFloatingButton";

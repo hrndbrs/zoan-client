@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
-import { Header, Footer } from "@/components/shared";
+import { Header, Footer, WhatsAppFloatingButton } from "@/components/shared";
 import { Toaster } from "@/components/ui/toaster";
 
 import "./globals.css";
@@ -27,6 +27,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Toaster />
+        <WhatsAppFloatingButton />
       </body>
     </html>
   );
