@@ -11,7 +11,7 @@ export default async function CategoriesContainer() {
 
     return (
       <div className="inner-container mb-[7.5rem]">
-        <div className="w-full grid gap-8 divide-natural-3 md:grid-cols-3 lg:grid-cols-5 max-md:divide-y">
+        <div className="w-full grid gap-8 divide-natural-3 sm:grid-cols-2 md:grid-cols-3 max-sm:divide-y">
           {categories.map(({ icon, title, subTitle }) => (
             <CustomCard
               key={title}
@@ -19,9 +19,9 @@ export default async function CategoriesContainer() {
               icon={icon!}
               description={subTitle}
               iconsize={IconSize.MD}
-              className="shadow-none rounded-none [&:not(:first-child)]:max-md:pt-8"
+              className="shadow-none rounded-none [&:not(:first-child)]:max-sm:pt-8"
               contentClassName="h-full p-0 gap-4"
-              innerContentClassName="flex-1 justify-between"
+              innerContentClassName="flex-1"
               titleClassName="text-h5"
               descriptionClassName="line-clamp-4"
             >
