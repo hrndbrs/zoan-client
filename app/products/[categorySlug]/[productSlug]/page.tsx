@@ -7,7 +7,7 @@ import {
   SupprtedOSContainer,
 } from "@/components/sections/product-detail";
 import { getProductDetail } from "@/services/products.service";
-import { appendImageUrl, generateSeo } from "@/lib/helpers";
+import { appendImageUrl } from "@/lib/helpers";
 import { Metadata } from "next";
 
 type ProductDetailParamsType = {
@@ -15,13 +15,17 @@ type ProductDetailParamsType = {
   productSlug: string;
 };
 
-export async function generateMetadata({ params }: { params: ProductDetailParamsType }): Promise<Metadata> {  
+export async function generateMetadata({
+  params,
+}: {
+  params: ProductDetailParamsType;
+}): Promise<Metadata> {
   const { productSlug } = params;
   const products = await getProductDetail(productSlug);
   return {
     title: `${products?.name} - Zoan`,
-    description: products?.seo? products?.seo.metaDescription : ""
-  }
+    description: products?.seo ? products?.seo.metaDescription : "",
+  };
 }
 
 export default async function ProductDetail({ params }: { params: ProductDetailParamsType }) {

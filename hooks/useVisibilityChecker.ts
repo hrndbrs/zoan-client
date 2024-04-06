@@ -1,7 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function useVisibilityChecker(yOffset: number = 0, xOffset: number = 0) {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+type Options = {
+  init?: boolean;
+  yOffset?: number;
+  xOffset?: number;
+};
+
+export default function useVisibilityChecker({
+  init = true,
+  yOffset = 0,
+  xOffset = 0,
+}: Options = {}) {
+  const [isVisible, setIsVisible] = useState<boolean>(init);
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -10,9 +20,8 @@ export default function useVisibilityChecker(yOffset: number = 0, xOffset: numbe
         const rect = ref.current.getBoundingClientRect();
         const isVisible =
           rect.top + yOffset >= 0 &&
-          rect.left + xOffset >= 0 &&
-          rect.bottom + yOffset <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right + xOffset <= (window.innerWidth || document.documentElement.clientWidth);
+          rect.bottom + yOffset <= (window.innerHeight || document.documentElement.clientHeight);
+
         setIsVisible(isVisible);
       }
     }

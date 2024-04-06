@@ -4,7 +4,7 @@ import useVisibilityChecker from "@/hooks/useVisibilityChecker";
 import NavigationMenu from "./NavigationMenu";
 
 export default function Navigation() {
-  const [menuRef, isMenuVisible] = useVisibilityChecker(80);
+  const [menuRef, isMenuVisible] = useVisibilityChecker({ yOffset: 80 });
   const [fixedMenuRef, isFixedMenuVisible] = useVisibilityChecker();
 
   return (

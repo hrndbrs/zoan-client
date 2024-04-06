@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { BiSolidChevronUp } from "react-icons/bi";
 import useOnRouteChange from "@/hooks/useOnRouteChange";
 import CategoriesDropdown from "./CategoriesDropdown";
@@ -19,16 +19,35 @@ export default function DesktopLinksContainer({
   ...props
 }: NavLinksContainerProps) {
   const [dropdownIsOpen, setDropdownIsOpen] = useOnRouteChange<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   function toggleDropdown() {
     setDropdownIsOpen((state) => !state);
   }
 
+  const close = useCallback(() => setDropdownIsOpen(false), [setDropdownIsOpen]);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        close();
+      }
+    }
+
+    if (dropdownIsOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownIsOpen, close]);
+
   useEffect(() => {
     if (!isVisible) {
-      setDropdownIsOpen(false);
+      close();
     }
-  }, [isVisible, setDropdownIsOpen]);
+  }, [isVisible, close]);
 
   return (
     <ul className={className} {...props}>
@@ -51,7 +70,7 @@ export default function DesktopLinksContainer({
             className={cn("transition-all", dropdownIsOpen ? "rotate-0" : "rotate-180")}
           />
         </button>
-        {dropdownIsOpen ? <CategoriesDropdown /> : undefined}
+        {dropdownIsOpen ? <CategoriesDropdown ref={dropdownRef} /> : undefined}
       </li>
       <NavLink {...navLinkProps} path="/warranty">
         Warranty
