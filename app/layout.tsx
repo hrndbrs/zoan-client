@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
 import { Header, Footer, WhatsAppFloatingButton } from "@/components/shared";
 import { Toaster } from "@/components/ui/toaster";
+import CategoryProvider from "@/contexts/CategoryProvider";
 
 import "./globals.css";
 
@@ -22,13 +23,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={barlow.className}>
-        <Header />
-        {children}
-        <Footer />
-        <Toaster />
-        <WhatsAppFloatingButton />
-      </body>
+      <CategoryProvider>
+        <body className={barlow.className}>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster />
+          <WhatsAppFloatingButton />
+        </body>
+      </CategoryProvider>
     </html>
   );
 }

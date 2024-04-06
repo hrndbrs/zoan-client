@@ -1,11 +1,11 @@
 import LabelTop from "./LabelTop";
-import NavigationMenu from "./navigation/NavigationMenu";
+import Navigation from "./navigation";
 
 export default function Header() {
   return (
     <header>
       <LabelTop />
-      <NavigationMenu />
+      <Navigation />
     </header>
   );
 }

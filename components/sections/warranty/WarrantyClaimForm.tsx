@@ -1,15 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { warrantyClaimFormSchema } from "@/lib/zod/schema";
 import { InputFieldProps } from "@/components/shared/form/CustomForm";
 import { CustomForm, SectionHeader } from "@/components/shared";
-import { getProductCategories } from "@/services/categories.service";
-import { SelectOption } from "@/lib/types/select-option.type";
 import { handleSubmitWarrantyForm } from "@/services/warranty.service";
+import { CategoryContext } from "@/contexts/CategoryProvider";
 
 export default function WarrantyClaimForm() {
-  const [categories, setCategories] = useState<SelectOption[]>([]);
+  const { categories } = useContext(CategoryContext);
+  const categoryOptions = categories.map(({ attributes }) => ({
+    value: attributes.title,
+    label: attributes.title,
+  }));
   const inputFields: InputFieldProps[] = [
     { name: "name" },
     { name: "institutionName" },
@@ -20,26 +23,11 @@ export default function WarrantyClaimForm() {
       name: "productCategory",
       inputType: "select",
       placeholder: "Select one...",
-      options: categories,
+      options: categoryOptions,
     },
     { name: "purchaseDate", type: "date", inputType: "date" },
     { name: "address", inputType: "textarea" },
   ];
-
-  useEffect(() => {
-    getProductCategories().then((data) => {
-      if (data)
-        setCategories(
-          data.map((category) => {
-            const { title } = category.attributes;
-            return {
-              value: title,
-              label: title,
-            };
-          }),
-        );
-    });
-  }, []);
 
   return (
     <section id="warranty-form" className="px-5 py-6">
