@@ -8,7 +8,7 @@ export default function BreadCrumb() {
   const routes = usePathname().substring(1).split("/");
 
   return (
-    <>
+    <p className="line-clamp-1">
       {routes.map((route) => {
         const isCurrentRoute = route === routes.at(-1);
         return (
@@ -20,6 +20,6 @@ export default function BreadCrumb() {
           </span>
         );
       })}
-    </>
+    </p>
   );
 }
