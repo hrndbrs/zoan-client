@@ -20,6 +20,7 @@ export default function DesktopLinksContainer({
 }: NavLinksContainerProps) {
   const [dropdownIsOpen, setDropdownIsOpen] = useOnRouteChange<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownTriggerRef = useRef<HTMLButtonElement>(null);
 
   function toggleDropdown() {
     setDropdownIsOpen((state) => !state);
@@ -29,7 +30,11 @@ export default function DesktopLinksContainer({
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node) &&
+        e.target !== dropdownTriggerRef.current
+      ) {
         close();
       }
     }
@@ -59,6 +64,7 @@ export default function DesktopLinksContainer({
       </NavLink>
       <li className="flex items-center">
         <button
+          ref={dropdownTriggerRef}
           className={cn(
             "nav-link flex gap-1 items-center",
             dropdownIsOpen ? "after:w-full" : undefined,
