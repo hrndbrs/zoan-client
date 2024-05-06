@@ -6,7 +6,9 @@ import { Category } from "@/lib/types/categories.type";
 
 export async function getProductDetail(productSlug: string) {
   try {
-    const { data } = await api.get<Product>(`/products/${productSlug}?populate=deep`);
+    const { data } = await api.get<Product>(
+      `/products/${encodeURIComponent(productSlug)}?populate=deep`,
+    );
     return data.data.attributes;
   } catch (error) {}
 }

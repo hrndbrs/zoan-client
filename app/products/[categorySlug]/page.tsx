@@ -10,7 +10,7 @@ type RouteParamsType = {
   categorySlug: string;
 };
 
-export async function generateMetadata({ params }: { params: RouteParamsType }): Promise<Metadata> {  
+export async function generateMetadata({ params }: { params: RouteParamsType }): Promise<Metadata> {
   const { categorySlug } = params;
   return generateSeo(categorySlug);
 }
@@ -52,7 +52,10 @@ export default async function CategoryProducts({ params }: { params: RouteParams
                 innerContentClassName="items-center gap-2"
                 titleClassName="text-h6 normal-case"
               >
-                <Link className="w-full" href={`/products/${categorySlug}/${product.name}`}>
+                <Link
+                  className="w-full"
+                  href={`/products/${categorySlug}/${encodeURIComponent(product.name)}`}
+                >
                   <Button className="w-full">See Details</Button>
                 </Link>
               </CustomCard>
