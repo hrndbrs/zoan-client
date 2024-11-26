@@ -20,12 +20,15 @@ export default function BlogsContainer({ blogs }: BlogsContainerPropType) {
             description={
               <>
                 <p>{formatDate(new Date(blog.publishedAt))}</p>
-                <div className="line-clamp-4" dangerouslySetInnerHTML={{ __html: blog.content }} />
+                <div
+                  className="line-clamp-4"
+                  dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
               </>
             }
-            className="shadow-md rounded-none"
-            contentClassName="py-3 px-4"
-            titleClassName="text-h5"
+            className="shadow-md rounded-none flex flex-col"
+            contentClassName="py-3 px-4 flex-1 justify-between"
+            titleClassName="text-h5 line-clamp-1"
             innerContentClassName="gap-1"
           >
             <Link className="self-end" href={`/read/${blog.title}`}>

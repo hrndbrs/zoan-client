@@ -16,7 +16,10 @@ type BlogViewerPropType = {
   showScrollButton?: boolean;
 };
 
-export default function BlogViewer({ header, showScrollButton = true }: BlogViewerPropType) {
+export default function BlogViewer({
+  header,
+  showScrollButton = true,
+}: BlogViewerPropType) {
   const [blogs, setBlogs] = useState<BlogData[]>([]);
 
   const { scrollAreaRef, scrollLeft, scrollRight } = useOnClickScroll();
@@ -32,7 +35,9 @@ export default function BlogViewer({ header, showScrollButton = true }: BlogView
       {header || showScrollButton ? (
         <div className="flex justify-between items-center mx-auto max-w-[75rem] mb-8">
           {header ? (
-            <h4 className="uppercase font-bold text-h4 max-md:text-h5">{header}</h4>
+            <h4 className="uppercase font-bold text-h4 max-md:text-h5">
+              {header}
+            </h4>
           ) : undefined}
           {showScrollButton ? (
             <div>
@@ -76,8 +81,8 @@ export default function BlogViewer({ header, showScrollButton = true }: BlogView
                   />
                 </>
               }
-              className="viewer-card"
-              contentClassName="py-3 px-4"
+              className="viewer-card flex flex-col"
+              contentClassName="py-3 px-4 justify-between flex-1"
               titleClassName="text-h5 whitespace-normal line-clamp-1"
               innerContentClassName="gap-1"
               descriptionClassName="max-md:font-bold"
@@ -88,7 +93,10 @@ export default function BlogViewer({ header, showScrollButton = true }: BlogView
             </CustomCard>
           ))}
         </div>
-        <ScrollBar className="max-w-[75rem] mx-auto bg-natural-2" orientation="horizontal" />
+        <ScrollBar
+          className="max-w-[75rem] mx-auto bg-natural-2"
+          orientation="horizontal"
+        />
       </ScrollArea>
     </section>
   );

@@ -1,4 +1,9 @@
-import { Card, CardDescription, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardDescription,
+  CardTitle,
+  CardContent,
+} from "@/components/ui/card";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -50,9 +55,17 @@ export default function CustomCard({
     <Card className={className}>
       {props.imageUrl ? (
         <div
-          className={cn("w-full relative aspect-[600/396] overflow-hidden", props.imageClassName)}
+          className={cn(
+            "w-full relative aspect-[600/396] overflow-hidden",
+            props.imageClassName,
+          )}
         >
-          <Image src={props.imageUrl} fill style={{ objectFit: "cover" }} alt={title} />
+          <Image
+            src={props.imageUrl}
+            fill
+            style={{ objectFit: "cover" }}
+            alt={title}
+          />
         </div>
       ) : undefined}
       <CardContent className={cn("flex flex-col gap-6 p-8", contentClassName)}>
@@ -76,9 +89,13 @@ export default function CustomCard({
           </div>
         ) : undefined}
         <div className={cn("flex flex-col gap-6", innerContentClassName)}>
-          <CardTitle className={cn("uppercase font-bold", titleClassName)}>{title}</CardTitle>
+          <CardTitle className={cn("uppercase font-bold", titleClassName)}>
+            {title}
+          </CardTitle>
           {description ? (
-            <CardDescription className={cn("text-body-16", descriptionClassName)}>
+            <CardDescription
+              className={cn("text-body-16", descriptionClassName)}
+            >
               {description}
             </CardDescription>
           ) : undefined}

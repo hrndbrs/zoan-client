@@ -5,7 +5,8 @@ import { Blogs } from "@/lib/types/blogs.type";
 
 export async function getBlogList(page?: number) {
   const endpoint =
-    "/blogs?pagination[pageSize]=6&populate=deep" + (page ? `&pagination[page]=${page}` : "");
+    "/blogs?pagination[pageSize]=6&populate=deep&sort[0]=createdAt:desc" +
+    (page ? `&pagination[page]=${page}` : "");
 
   try {
     const { data } = await api.get<Blogs>(endpoint);
@@ -16,7 +17,9 @@ export async function getBlogList(page?: number) {
 
 export async function getBlogDetail(slug: string) {
   try {
-    const { data } = await api.get<Blogs>(`/blogs?populate=*&filters[title][$eq]=${slug}`);
+    const { data } = await api.get<Blogs>(
+      `/blogs?populate=*&filters[title][$eq]=${slug}`,
+    );
     if (!data.data[0]) throw new Error("Blog doesn't exist");
 
     return data.data[0];
