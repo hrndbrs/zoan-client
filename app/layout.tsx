@@ -35,10 +35,11 @@ export default function RootLayout({
                     style={{ display: 'none', visibility: 'hidden' }}>
             </iframe>
           </noscript>
+          <Script async src="https://www.googletagmanager.com/gtag/js?id=G-K0Y3E4ZJEE"></Script>
           <Toaster />
           <WhatsAppFloatingButton />
         </body>
-        <GoogleAnalytics gaId="GTM-MMTK8WQ8"/>
+        <GoogleAnalytics gaId="G-K0Y3E4ZJEE"/>
       </CategoryProvider>
     </html>
   );
