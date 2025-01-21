@@ -3,8 +3,10 @@ import { Barlow } from "next/font/google";
 import { Header, Footer, WhatsAppFloatingButton } from "@/components/shared";
 import { Toaster } from "@/components/ui/toaster";
 import CategoryProvider from "@/contexts/CategoryProvider";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 import "./globals.css";
+import Script from "next/script";
 
 const barlow = Barlow({
   weight: ["200", "400", "700", "800"],
@@ -28,9 +30,15 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <noscript>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMTK8WQ8" height="0" width="0"
+                    style={{ display: 'none', visibility: 'hidden' }}>
+            </iframe>
+          </noscript>
           <Toaster />
           <WhatsAppFloatingButton />
         </body>
+        <GoogleAnalytics gaId="GTM-MMTK8WQ8"/>
       </CategoryProvider>
     </html>
   );
